@@ -1,1 +1,2 @@
-# wej-tech
+# How to setup:
+will update here
