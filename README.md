@@ -1,8 +1,5 @@
 # Running the Repository
-
-class: STEM Related
-created on: July 11, 2022 10:08 AM
-etc.: Going through on what to install and what commands to run
+Going through on what to install and what commands to run
 
 # Create a virtual environment
 
