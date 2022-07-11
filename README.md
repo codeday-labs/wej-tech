@@ -4,7 +4,7 @@ Going through on what to install and what commands to run
 # Create a virtual environment
 
 <aside>
-✏️ **Use commands to install venv and make one**
+Use commands to install venv and make one
 
 - `pip install virtualenv`
     - used to install the virtualenv library
@@ -18,7 +18,7 @@ Going through on what to install and what commands to run
 # Installing Django
 
 <aside>
-✏️ **Use command to install Django**
+Use command to install Django
 
 Make sure to have your virtual environment activated before using this command!
 
@@ -29,7 +29,7 @@ Make sure to have your virtual environment activated before using this command!
 # Installing React + Babel + Webpack
 
 <aside>
-✏️ **Use commands to install React, Babel, and Webpack**
+Use commands to install React, Babel, and Webpack
 
 ***Before we get into what commands to use, I would like to explain what these libraries are that we’re going to install. This is information I got from the video, I do not have full knowledge of these other libraries other than this. They help us run React and Django together.***
 
@@ -55,13 +55,13 @@ Make sure to have your directory in the frontend folder! directory → `wej-tech
 # Running the Web App
 
 <aside>
-✏️ **Use commands to run the webapp**
+Use commands to run the webapp
 
 ***You will need to have two consoles/terminals to complete the running of the webapp, one for Django and the other for React. You can open multiple terminals within VSCode by pressing a “+” button some where near the bottom right of the screen.***
 
 Make sure to have your directory in the project folder! directory → `wej-tech/project`
 
-- `python [manage.py](http://manage.py) runserver`
+- `python manage.pyrunserver`
     - this will run Django part of the webapp
 
 Make sure to have your directory in the frontend folder! directory → `wej-tech/project/frontend`
