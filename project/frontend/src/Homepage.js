@@ -1,4 +1,4 @@
-import { Flex, Heading, Input, Button, Box, Text, Spacer } from '@chakra-ui/react';
+import { Flex, Heading, Input, Button, Box, Text, Spacer, Stack, HStack, VStack, Center, Container } from '@chakra-ui/react';
 import React, { Component } from 'react';
 
 
@@ -68,7 +68,7 @@ const BottomBar2 = () => (
     <>
         {/* // For the whole encapsulation of the box
         // - style in a column, the two flexes for wejtech + other  */}
-        <Flex direction='column'> 
+        <Flex direction='column' background='#EDF2F7' margin>
 
             {/* // Flex for the Wejtech logo/name in the very top middle */}
             <Flex justifyContent='center'>
@@ -77,47 +77,83 @@ const BottomBar2 = () => (
 
             {/* // Be for everything else below Wejtech stuff
             // - style all 3 flexes to be in a row */}
-            <Flex >
-
-                <Spacer />
+            <Flex justifyContent='space-evenly'>
 
                 {/* // addrs, phone#, email for our company
                 // - style in column */}
-                <Flex direction='column'>
+                <Stack justify='left'>
                     <Text>address</Text>
                     <Text>phone#</Text>
                     <Text>email</Text>
-                </Flex>
+                </Stack>
 
-                <Spacer />
+                {/* <Spacer /> */}
 
                 {/* // faq + policy
                 // - style in column */}
-                <Flex direction='column'>
+                <Stack justify='center'>
                     <Text>FAQ + Policy</Text>
-                </Flex>
+                </Stack>
 
-                <Spacer />
+                {/* <Spacer /> */}
 
                 {/* // signup + input email for newsletter
                 // - style in column */}
-                <Flex direction='column'>
+                <Stack justify='right'>
+                    
                     <Text>Sign up for news letter</Text>
 
                         {/* // Be for button and input for email
                         // - style in a row  */}
                         <Flex>
-                            <Input></Input>
-                            <Button></Button>
+                            <Input placeholder='example@gmail.com'></Input>
+                            <Button colorScheme='twitter'>Sign up</Button>
                         </Flex>
-                </Flex>
+                </Stack>
 
-                <Spacer />
+                {/* <Spacer /> */}
 
             </Flex>
 
         </Flex>
     </>
+)
+
+
+const Footer = () => (
+    <Container maxW='full' background='#EDF2F7'>
+        <WEJT />
+        <BelowWEJT />
+    </Container>
+    
+)
+
+const WEJT = () => (
+    <Center>
+        <Heading as='h3'>WEJ-Tech</Heading>
+    </Center>
+)
+
+const BelowWEJT = () => (
+    <HStack justifyContent='space-evenly'>
+        <Center width='250px' background='pink'>
+            <Stack>
+                <Text>Address:</Text>
+                <Text>123 Peck Road, Fremont, CA 94536</Text>
+                <Text>Phone Number:</Text>
+                <Text>510-123-4567</Text>
+                <Text>Email:</Text>
+                <Text>wejtech@wejtech.com</Text>
+            </Stack>
+        </Center>
+        <Center width='250px' height='100px'>
+            <Text>FAQ + Policy</Text>
+        </Center>
+        <Center width='250px' height='100px'>
+            <Input placeholder='youremail@gmail.com'></Input>
+            <Button>Log in</Button>
+        </Center>
+    </HStack>
 )
 
 const LogInExample = () => (
@@ -135,21 +171,33 @@ const LogInExample = () => (
 
 const Background = () => (
     <>
-        <Box
+        <Center
             pos="relative"
             h="1080"
-            bgImage="url(https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9468f3c3-5349-4700-b759-237bf692f6aa/38580.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220712%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220712T201709Z&X-Amz-Expires=86400&X-Amz-Signature=7549f2ba1874516b57cf7187b14591176222a256276738928a8bb6d8a63458c0&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%2238580.jpg%22&x-id=GetObject)"
+            bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
             bgPosition="center"
             bgRepeat="no-repeat"
-        />
+        >
+
+            <Stack color='white' align='center'>
+                <Heading as='h1' size='4xl'>Eye catching phrase</Heading>
+                <Text>Placeholder</Text>
+                <Button colorScheme='whatsapp'>Get Started</Button>
+            </Stack>
+
+        </Center>
     </>
 )
 
+const PageCenter = () => (
+    <Header>PageCenter</Header>
+)
 const Homepage = () => {
     return (
         <div>
-            {/* <TopBar /> */}
-            <BottomBar2 />
+            <TopBar />
+            <Background />
+            <Footer />
         </div>
     )
 }
