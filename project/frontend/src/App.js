@@ -10,7 +10,7 @@ import LoginPage from './LoginPage';
 const App = () => {
     return (
         <ChakraProvider>
-            <LoginPage />
+            <Homepage />
         </ChakraProvider>
     )
 }
