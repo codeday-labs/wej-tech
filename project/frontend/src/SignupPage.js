@@ -1,7 +1,7 @@
 import { Flex, Heading, Input, Button, Box, Text, Spacer, Stack, HStack, VStack, Center, Container } from '@chakra-ui/react';
 import React, { Component } from 'react';
 
-const LogIn = () => (
+const Signup = () => (
     <>
         <Flex height='100vh' alignItems='center' justifyContent='center'>
             <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
@@ -19,10 +19,10 @@ const LogIn = () => (
     </>
 )
 
-const LoginPage = () => {
+const SignupPage = () => {
     return (
-        <LogIn />
+         <Signup />
     )
 }
 
-export default LoginPage
+export default SignupPage

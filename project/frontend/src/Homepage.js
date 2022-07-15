@@ -1,5 +1,7 @@
 import { Flex, Heading, Input, Button, Box, Text, Spacer, Stack, HStack, VStack, Center, Container } from '@chakra-ui/react';
 import React, { Component } from 'react';
+import SignupPage from './SignupPage';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 
 
 // home, calculate, community, login, signup
@@ -107,7 +109,7 @@ const BottomBar2 = () => (
                         // - style in a row  */}
                         <Flex>
                             <Input placeholder='example@gmail.com'></Input>
-                            <Button colorScheme='twitter'>Sign up</Button>
+                                <Button colorScheme='twitter'>Sign up</Button>
                         </Flex>
                 </Stack>
 
@@ -182,7 +184,9 @@ const Background = () => (
             <Stack color='white' align='center'>
                 <Heading as='h1' size='4xl'>Eye catching phrase</Heading>
                 <Text>Placeholder</Text>
-                <Button colorScheme='whatsapp'>Get Started</Button>
+                <Link to='/frontend/signup'>
+                    <Button colorScheme='whatsapp'>Get Started</Button>
+                </Link>
             </Stack>
 
         </Center>

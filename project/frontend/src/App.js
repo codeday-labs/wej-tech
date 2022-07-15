@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Homepage from './Homepage';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import LoginPage from './LoginPage';
+import SignupPage from './SignupPage';
+import TestingRouting from './TestingRouting';
 
 // const theme = extendTheme({
 // })   
@@ -10,7 +11,7 @@ import LoginPage from './LoginPage';
 const App = () => {
     return (
         <ChakraProvider>
-            <Homepage />
+            <TestingRouting />
         </ChakraProvider>
     )
 }
