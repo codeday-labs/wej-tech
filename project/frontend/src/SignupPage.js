@@ -32,9 +32,30 @@ const Signup = () => (
 const SignupPage = () => {
 
     const [ firstName, setFirstName ] = useState('');
+    const [ lastName, setLastName ] = useState('');
+    const [ telephone, setTelephone ] = useState('');
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
 
-    const test = () => {
-        alert(firstName);
+    const handleButtonPressed = () => {
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify({
+                first_name: firstName,
+                last_name: lastName,
+                telephone: telephone,
+                email: email,
+                password: password
+            })
+        };
+        // sends a req to local host to the create-user page
+        // send it with requestOptions that has the "payload" (the body)
+        // once response (.then), convert response into json
+        // then take data and print it out to the console
+        fetch('/appexample/create-user', requestOptions)
+        .then((response) => response.json())
+        .then((data) => console.log(data));
     }
 
     return (
@@ -48,14 +69,38 @@ const SignupPage = () => {
                     type='text'
                     onChange={event => setFirstName(event.target.value)}
                 />
-                <Input placeholder='Last Name' variant='filled' mb={3} type='text'/>
-                <Input placeholder='Phone Number' variant='filled' mb={3} type='tel'/>
-                <Input placeholder='Email Address' variant='filled' mb={3} type='email'/>
-                <Input placeholder='Enter Password' variant='filled' mb={3} type='password'/>
+                <Input
+                    placeholder='Last Name'
+                    variant='filled'
+                    mb={3}
+                    type='text'
+                    onChange={event => setLastName(event.target.value)}
+                />
+                <Input
+                    placeholder='Telephone Number'
+                    variant='filled'
+                    mb={3}
+                    type='tel'
+                    onChange={event => setTelephone(event.target.value)}
+                />
+                <Input
+                    placeholder='Email'
+                    variant='filled'
+                    mb={3}
+                    type='email'
+                    onChange={event => setEmail(event.target.value)}
+                />
+                <Input
+                    placeholder='Password'
+                    variant='filled'
+                    mb={3}
+                    type='password'
+                    onChange={event => setPassword(event.target.value)}
+                />
                 <Input placeholder='Confirm Password' variant='filled' mb={6} type='password'/>
                 <Button
                     colorScheme='teal'  
-                    onClick={test}
+                    onClick={handleButtonPressed}
                 >
                     Sign Up
                 </Button>
