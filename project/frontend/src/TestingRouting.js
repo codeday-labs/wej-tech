@@ -1,6 +1,8 @@
 import React from 'react';
 import SignupPage from './SignupPage';
+import LoginPage from './LoginPage';
 import Homepage from './Homepage';
+import CalculatePage from './CalculatePage';
 import { BrowserRouter as Router, Routes, Route, Link, Redirect } from 'react-router-dom';
 
 const TestingRouting = () => {
@@ -9,6 +11,8 @@ const TestingRouting = () => {
             <Routes>
                 <Route exact path='/frontend' element={<Homepage />} />
                 <Route exact path='/frontend/signup' element={<SignupPage />} />
+                <Route exact path='/frontend/login' element={<LoginPage />} />
+                <Route exact path='/frontend/calculate' element={<CalculatePage />} />
             </Routes>
         </Router>
     )

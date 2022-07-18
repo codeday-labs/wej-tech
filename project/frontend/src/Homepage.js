@@ -20,12 +20,18 @@ const TopBar = () => (
         <Flex alignItems='center' justifyContent='space-between' background='#EDF2F7'>
             <Flex alignItems='left' background='#EDF2F7'>
                 <Button>Home</Button>
-                <Button>Calculate</Button>
+                <Link to='/frontend/calculate'>
+                    <Button>Calculate</Button>
+                </Link>
                 <Button>Community</Button>
             </Flex>
             <Flex alignItems='right'>
-                <Button>Log In</Button>
-                <Button>Sign Up</Button>
+                <Link to='/frontend/login'>
+                    <Button>Log In</Button>
+                </Link>
+                <Link to='/frontend/signup'>
+                    <Button>Sign Up</Button>
+                </Link>
             </Flex>
         </Flex>
     </>
@@ -186,6 +192,9 @@ const Background = () => (
                 <Text>Placeholder</Text>
                 <Link to='/frontend/signup'>
                     <Button colorScheme='whatsapp'>Get Started</Button>
+                </Link>
+                <Link to='/frontend/login'>
+                    <Text>or if you already have an account</Text>
                 </Link>
             </Stack>
 
