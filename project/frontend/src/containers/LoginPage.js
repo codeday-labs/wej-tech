@@ -1,7 +1,11 @@
 import { Flex, Heading, Input, Button, Box, Text, Spacer, Stack, HStack, VStack, Center, Container } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { login } from '../actions/auth';
+import { axios } from 'axios';
+// import {connect} from 'react-redux';
 
-const LoginPage = () => {
+const LoginPage = (login, isAuthenticated) => {
 
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -21,6 +25,10 @@ const LoginPage = () => {
         };
     }
 
+    if (isAuthenticated) {
+        return <Redirect to='/frontend' />
+    }
+
     return (
         <Flex height='100vh' alignItems='center' justifyContent='center'>
             <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
@@ -31,6 +39,7 @@ const LoginPage = () => {
                     mb={3}
                     type='email'
                     onChange={event => setEmail(event.target.value)}
+                    required
                 />
                 <Input
                     placeholder='Password'
@@ -38,6 +47,7 @@ const LoginPage = () => {
                     mb={3}
                     type='password'
                     onChange={event => setPassword(event.target.value)}
+                    required
                 />
                 <Button
                     colorScheme='teal'  
@@ -45,10 +55,19 @@ const LoginPage = () => {
                 >
                     Login
                 </Button>
+                <Link to='/frontend/signup'>
+                    <Text>Don't have an account?</Text>
+                </Link>
+                <Link to='/frontend/reset-password'>
+                    <Text>Forgot your password?</Text>
+                </Link>
             </Flex>
         </Flex>
-
     )
 }
 
-export default LoginPage
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login })(LoginPage);

@@ -1,20 +1,30 @@
 import React from 'react';
-import SignupPage from './SignupPage';
-import LoginPage from './LoginPage';
-import Homepage from './Homepage';
-import CalculatePage from './CalculatePage';
+import SignupPage from './containers/SignupPage';
+import LoginPage from './containers/LoginPage';
+import Homepage from './containers/Homepage';
+import CalculatePage from './containers/CalculatePage';
 import { BrowserRouter as Router, Routes, Route, Link, Redirect } from 'react-router-dom';
+
+import ResetPassword from './containers/ResetPassword';
+import ResetPasswordConfirm from './containers/ResetPasswordConfirm';
+import { Provider } from 'react-redux';
+import store from './store';
+import Layout from './hocs/Layout';
 
 const TestingRouting = () => {
     return (
-        <Router>
-            <Routes>
-                <Route exact path='/frontend' element={<Homepage />} />
-                <Route exact path='/frontend/signup' element={<SignupPage />} />
-                <Route exact path='/frontend/login' element={<LoginPage />} />
-                <Route exact path='/frontend/calculate' element={<CalculatePage />} />
-            </Routes>
-        </Router>
+        <Provider store={store}>
+            <Router>
+                <Layout>
+                    <Routes>
+                        <Route exact path='/frontend' element={<Homepage />} />
+                        <Route exact path='/frontend/signup' element={<SignupPage />} />
+                        <Route exact path='/frontend/login' element={<LoginPage />} />
+                        <Route exact path='/frontend/calculate' element={<CalculatePage />} />
+                    </Routes>
+                </Layout>
+            </Router>
+        </Provider>
     )
 }
 

@@ -11,7 +11,7 @@ from .models import User
 from rest_framework.views import APIView # generic API view, override default methods
 from rest_framework.response import Response # so we can send custom response from view
 from rest_framework import status # gives access to HTTP codes
-from .serializers import CreateUserSerializer 
+from .serializers import UserCreateSerializer
 
 # Create your views here.
 # def placeholder(request):
@@ -28,7 +28,7 @@ class ListUserView(generics.ListAPIView):
     serializer_class = UserSerializer
 
 class CreateUserView(APIView):
-    serializer_class = CreateUserSerializer
+    serializer_class = UserCreateSerializer
 
     def post(self, request, format=None):
         serializer = self.serializer_class(data=request.data) # take all data and return python representation,
