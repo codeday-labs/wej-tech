@@ -13,6 +13,15 @@ from rest_framework.response import Response # so we can send custom response fr
 from rest_framework import status # gives access to HTTP codes
 from .serializers import CreateUserSerializer 
 
+#these below 6 lines are for image upload, but there are some overlapping so they're commented out
+#from .serializers import UserSerializer
+#from .models import User
+#from rest_framework.views import APIView
+from rest_framework.parsers import MultiPartParser, FormParser
+#from rest_framework.response import Response
+#from rest_framework import status
+from .models import Image
+
 # Create your views here.
 # def placeholder(request):
 #     return HttpResponse("You are in the view of appexample")
@@ -28,7 +37,14 @@ class ListUserView(generics.ListAPIView):
     serializer_class = UserSerializer
 
 class CreateUserView(APIView):
+    parser_classes = (MultiPartParser, FormParser)
+
     serializer_class = CreateUserSerializer
+
+    def get(self, request, format=None):
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
 
     def post(self, request, format=None):
         serializer = self.serializer_class(data=request.data) # take all data and return python representation,
@@ -49,4 +65,32 @@ class CreateUserView(APIView):
         
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 
+class CalculateView(APIView):
+    parser_classes = (MultiPartParser, FormParser)
 
+    serializer_class = CreateUserSerializer
+
+    def post(self, request, format=None):
+        #imagedb means the image in the database
+        imagedb = Image(uploader=null, image=request.FILES['image']) #keywords to search: django get image from request
+        imagedb.save()
+
+        # #figure out the code to put here to analyze the image
+        # countPixel = 0
+        # def getWH():     #get width and height of the image
+        # {
+
+        # }
+
+        # def isGreen():    #boolean function to determine if that pixel is green
+
+        #def countP():      #count pixels
+            # for row in range(0, height):
+            #     for col in range(0, width):
+            #         if isGreen(getWH(row,col)):
+            #             countPixel = countPixel + 1
+
+        #def calculateO2():
+        #formula and stuff
+        print(request)
+        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
