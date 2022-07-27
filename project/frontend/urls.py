@@ -10,4 +10,6 @@ urlpatterns = [
     path('reset-password', index),
     path('password/reset/confirm/<str:uid>/<str:token>', index),
     path('activate/<str:uid>/<str:token>', index),
+    path('community', index),
+    path('calculate', index)
 ]

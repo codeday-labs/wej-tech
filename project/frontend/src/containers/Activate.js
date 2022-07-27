@@ -26,15 +26,24 @@ const Activate = ({ verify }) => {
     }
 
     return (
-        <Flex flexDirection='column'>
+        <Flex
+            height='100vh'
+            alignItems='center'
+            justifyContent='center'
+            bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
+            bgPosition="center"
+            bgRepeat="no-repeat"
+        >
+            <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
 
-            <Heading>Verify your account</Heading>
-            <Button
-                onClick={verify_account}
-            >
-            Verify
-            </Button>
-
+                <Heading mb={6}>Verify your account</Heading>
+                <Button
+                    onClick={verify_account}
+                    colorScheme='whatsapp'
+                >
+                Verify
+                </Button>
+            </Flex>
         </Flex>
     );
 };

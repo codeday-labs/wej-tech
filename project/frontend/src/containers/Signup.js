@@ -49,71 +49,89 @@ const Signup = ({ signup, isAuthenticated }) => {
     }
 
     return (
-        <Flex flexDirection='column'>
+        <Flex
+            height='100vh'
+            alignItems='center'
+            justifyContent='center'
+            bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
+            bgPosition="center"
+            bgRepeat="no-repeat"
+        >
+            <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
 
-            <Heading>Sign Up</Heading>
-            <Text>Create Account</Text>
-            <form onSubmit={e => onSubmit(e)}>
-                <FormControl>
-                    <FormLabel>Email</FormLabel>
-                    <Input
-                        type='email'
-                        name='email'
-                        value={email}
-                        placeholder='Email'
-                        onChange={e => onChange(e)}
-                        required
-                    />
-                </FormControl>
-                <FormControl>
-                    <FormLabel>Name</FormLabel>
-                    <Input
-                        type='text'
-                        name='user_name'
-                        value={user_name}
-                        placeholder='Username'
-                        onChange={e => onChange(e)}
-                        required
-                    />
-                </FormControl>
-                <FormControl>
-                    <FormLabel>Password</FormLabel>
-                    <Input
-                        type='password'
-                        name='password'
-                        value={password}
-                        placeholder='Password'
-                        onChange={e => onChange(e)}
-                        minLength='6'
-                        required
-                    />
-                </FormControl>
-                <FormControl>
-                    <FormLabel>Password</FormLabel>
-                    <Input
-                        type='password'
-                        name='re_password'
-                        placeholder='Confirm Password'
-                        value={re_password}
-                        onChange={e => onChange(e)}
-                        minLength='6'
-                        required
-                    />
-                </FormControl>
-                    <Button
-                        type='submit'
-                    >
-                    Register
-                    </Button>
-            </form>
+                <Heading>Sign Up</Heading>
+                <Text mb={3}>Create Account</Text>
+                <form onSubmit={e => onSubmit(e)}>
+                    <FormControl>
+                        <FormLabel mb={3}>Email</FormLabel>
+                        <Input
+                            type='email'
+                            name='email'
+                            value={email}
+                            placeholder='Email'
+                            onChange={e => onChange(e)}
+                            required
+                            mb={3}
+                            variant='filled'
+                        />
+                    </FormControl>
+                    <FormControl>
+                        <FormLabel mb={3}>Name</FormLabel>
+                        <Input
+                            type='text'
+                            name='user_name'
+                            value={user_name}
+                            placeholder='Username'
+                            onChange={e => onChange(e)}
+                            required
+                            mb={3}
+                            variant='filled'
+                        />
+                    </FormControl>
+                    <FormControl>
+                        <FormLabel mb={3}>Password</FormLabel>
+                        <Input
+                            type='password'
+                            name='password'
+                            value={password}
+                            placeholder='Password'
+                            onChange={e => onChange(e)}
+                            minLength='6'
+                            required
+                            mb={3}
+                            variant='filled'
+                        />
+                    </FormControl>
+                    <FormControl>
+                        <FormLabel mb={3}>Password</FormLabel>
+                        <Input
+                            type='password'
+                            name='re_password'
+                            placeholder='Confirm Password'
+                            value={re_password}
+                            onChange={e => onChange(e)}
+                            minLength='6'
+                            required
+                            mb={3}
+                            variant='filled'
+                        />
+                    </FormControl>
+                        <Button
+                            type='submit'
+                            colorScheme='whatsapp'
+                            mb={6}
+                        >
+                        Register
+                        </Button>
+                </form>
 
-            <Text>
-                Already have an account? <Link to='/login'>Login</Link>
-            </Text>
-            <Text>
-                Forgot your password? <Link to='/reset-password'>Reset Password</Link>
-            </Text>
-
+                <Text>
+                    Already have an account? <Link to='/login'>Login</Link>
+                </Text>
+                <Text>
+                    Forgot your password? <Link to='/reset-password'>Reset Password</Link>
+                </Text>
+            </Flex>
         </Flex>
     );
 };

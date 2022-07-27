@@ -42,39 +42,53 @@ const ResetPasswordConfirm = ({ reset_password_confirm }) => {
     }
 
     return (
-        <Flex flexDirection='column'>
-            <Heading>Request Password Reset</Heading>
-            <form onSubmit={e => onSubmit(e)}>
-                <FormControl>
-                    <FormLabel>Password</FormLabel>
-                    <Input
-                        type='password'
-                        name='new_password'
-                        value={new_password}
-                        placeholder='New Password'
-                        onChange={e => onChange(e)}
-                        minLength='6'
-                        required
-                    />
-                </FormControl>
-                <FormControl>
-                    <FormLabel>Password</FormLabel>
-                    <Input
-                        type='password'
-                        name='re_new_password'
-                        value={re_new_password}
-                        placeholder='Confirm Password'
-                        onChange={e => onChange(e)}
-                        minLength='6'
-                        required
-                    />
-                </FormControl>
-                    <Button
-                        type='submit'
-                    >
-                    Reset Password
-                    </Button>
-            </form>
+        <Flex
+            height='100vh'
+            alignItems='center'
+            justifyContent='center'
+            bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
+            bgPosition="center"
+            bgRepeat="no-repeat"
+        >
+            <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
+                <Heading mb={3}>Request Password Reset</Heading>
+                <form onSubmit={e => onSubmit(e)}>
+                    <FormControl>
+                        <FormLabel mb={3}>Password</FormLabel>
+                        <Input
+                            type='password'
+                            name='new_password'
+                            value={new_password}
+                            placeholder='New Password'
+                            onChange={e => onChange(e)}
+                            minLength='6'
+                            required
+                            mb={3}
+                            variant='filled'
+                        />
+                    </FormControl>
+                    <FormControl>
+                        <FormLabel mb={3}>Password</FormLabel>
+                        <Input
+                            type='password'
+                            name='re_new_password'
+                            value={re_new_password}
+                            placeholder='Confirm Password'
+                            onChange={e => onChange(e)}
+                            minLength='6'
+                            required
+                            mb={3}
+                            variant='filled'
+                        />
+                    </FormControl>
+                        <Button
+                            type='submit'
+                            colorScheme='whatsapp'
+                        >
+                        Reset Password
+                        </Button>
+                </form>
+            </Flex>    
         </Flex>
     );
 };

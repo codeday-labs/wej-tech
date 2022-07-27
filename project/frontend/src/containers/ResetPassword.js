@@ -39,25 +39,37 @@ const ResetPassowrd = ({ reset_password }) => {
     }
 
     return (
-        <Flex flexDirection='column'>
-            <Heading>Request Password Reset</Heading>
-            <form onSubmit={e => onSubmit(e)}>
-                <FormControl>
-                    <FormLabel>Email</FormLabel>
-                    <Input
-                        type='email'
-                        name='email'
-                        placeholder='Email'
-                        onChange={e => onChange(e)}
-                        required
-                    />
-                </FormControl>
-                    <Button
-                        type='submit'
-                    >
-                    Reset Password
-                    </Button>
-            </form>
+        <Flex
+            height='100vh'
+            alignItems='center'
+            justifyContent='center'
+            bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
+            bgPosition="center"
+            bgRepeat="no-repeat"
+        >
+            <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
+                <Heading mb={3}>Request Password Reset</Heading>
+                <form onSubmit={e => onSubmit(e)}>
+                    <FormControl>
+                        <FormLabel mb={3}l>Email</FormLabel>
+                        <Input
+                            type='email'
+                            name='email'
+                            placeholder='Email'
+                            onChange={e => onChange(e)}
+                            required
+                            mb={3}
+                            variant='filled'
+                        />
+                    </FormControl>
+                        <Button
+                            type='submit'
+                            colorScheme='whatsapp'
+                        >
+                        Reset Password
+                        </Button>
+                </form>
+            </Flex>
         </Flex>
     );
 };
