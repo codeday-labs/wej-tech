@@ -5,4 +5,5 @@ urlpatterns = [
     path('', index),
     path('signup', index),
     path('login', index),
+    path('calculate', index),
 ]
