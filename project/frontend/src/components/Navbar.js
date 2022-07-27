@@ -46,7 +46,9 @@ const Navbar = ({ logout, isAuthenticated }) => {
                 <Link to='/calculate'>
                     <Button>Calculate</Button>
                 </Link>
-                <Button>Community</Button>
+                <Link to ='/community'>
+                    <Button>Community</Button>
+                </Link>
             </Flex>
             <Flex alignItems='right'>
                 {isAuthenticated ? authLinks() : guestLinks()}

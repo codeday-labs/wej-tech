@@ -13,6 +13,8 @@ import ResetPassword from './containers/ResetPassword';
 import ResetPasswordConfirm from './containers/ResetPasswordConfirm';
 import Signup from './containers/Signup';
 import Layout from './hocs/Layout';
+import Community from './containers/Community';
+import Calculate from './containers/Calculate';
 
 
 const AuthApp = () => {
@@ -28,6 +30,8 @@ const AuthApp = () => {
                                     <Route exact path='/reset-password' element={<ResetPassword />}/>
                                     <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />}/>
                                     <Route exact path='/activate/:uid/:token' element={<Activate />}/>
+                                    <Route exact path='/community' element={<Community />}/>
+                                    <Route exact path='/calculate' element={<Calculate />}/>
                                 </Routes>
                             </Layout>
                     </Router>
