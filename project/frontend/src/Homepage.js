@@ -12,6 +12,7 @@ const Menu = () => (
         <p>Community</p>
         <p>Login</p>
         <p>Sign up</p>
+        <p>TestCalculate</p>
     </>
 )
 
@@ -22,6 +23,9 @@ const TopBar = () => (
                 <Button>Home</Button>
                 <Link to='/frontend/calculate'>
                     <Button>Calculate</Button>
+                </Link>
+                <Link to='/frontend/calculate'>
+                    <Button>TestCalculate</Button>
                 </Link>
                 <Button>Community</Button>
             </Flex>

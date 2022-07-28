@@ -9,14 +9,14 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import os #for image upload
+import os  # for image upload
 from pathlib import Path
 import os
 from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-#these two are the same. but the version above is more modern 
+# these two are the same. but the version above is more modern
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'frontend.apps.FrontendConfig',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True #for image upload
+CORS_ORIGIN_ALLOW_ALL = True  # for image upload
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -107,8 +107,8 @@ DATABASES = {
     }
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
-EMAIL_HOST ='smtp.gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'jeri.imperial@gmail.com'
 EMAIL_HOST_PASSWORD = 'xhwlpaoadkrxrofz'
@@ -155,10 +155,25 @@ STATICFILES_DIR = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+# for image upload
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
+# # Temp
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework.authentication.TokenAuthentication',
+#     ),
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAdminUser'
+#     ),
+# }
+# # Temp
 # so know what are default auth system is
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticated', 'rest_framework.permissions.IsAdminUser',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -197,9 +212,6 @@ DJOSER = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#for image upload
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
 
 # for authentication
 AUTH_USER_MODEL = 'appexample.User'
