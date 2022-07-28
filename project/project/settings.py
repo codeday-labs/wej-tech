@@ -9,13 +9,15 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os #for image upload
 from pathlib import Path
 import os
 from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+#these two are the same. but the version above is more modern 
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -47,6 +49,8 @@ INSTALLED_APPS = [
     'djoser',
     'frontend.apps.FrontendConfig',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True #for image upload
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -193,4 +197,9 @@ DJOSER = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#for image upload
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# for authentication
 AUTH_USER_MODEL = 'appexample.User'
