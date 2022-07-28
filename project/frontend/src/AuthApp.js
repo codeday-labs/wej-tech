@@ -15,6 +15,8 @@ import Signup from './containers/Signup';
 import Layout from './hocs/Layout';
 import Community from './containers/Community';
 import Calculate from './containers/Calculate';
+import CalculatePage from './containers/CalculatePage';
+
 
 
 const AuthApp = () => {
@@ -32,6 +34,9 @@ const AuthApp = () => {
                                     <Route exact path='/activate/:uid/:token' element={<Activate />}/>
                                     <Route exact path='/community' element={<Community />}/>
                                     <Route exact path='/calculate' element={<Calculate />}/>
+                                    <Route exact path='/calculatepage' element={<CalculatePage />}/>
+
+
                                 </Routes>
                             </Layout>
                     </Router>
