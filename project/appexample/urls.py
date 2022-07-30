@@ -8,6 +8,7 @@ urlpatterns = [
     path('create-user', CreateUserView.as_view()),
     path('image-view', ImageView.as_view()),
     path('list-image-view', ListImageView.as_view()),
+    path('upload-image-view', UploadImageView.as_view()),
     path('calculate', CalculateView.as_view()),
     # path('image', views.ImageView.as_view()),
 ]
