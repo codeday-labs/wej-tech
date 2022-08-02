@@ -3,7 +3,6 @@ from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
-
 class UserAccountManager(BaseUserManager):
     # password = None -> because if pass nothing, then default it's none.
     def create_user(self, email, password=None, **extra_fields):
@@ -67,18 +66,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.user_name
 
 
-class Image(models.Model):
+class ImageHost(models.Model):
     # user info
     # uploader is to answer the question "which user created that image?"
     # "User" because we need the info from another class
 
     title = models.CharField(max_length=100, default='Me')
-    uploader = models.ForeignKey(
-        User, null=False, on_delete=models.CASCADE, default='1')
+    uploader = models.ForeignKey(User, null=False, on_delete=models.CASCADE, default='1')
     # user_name = models.CharField(max_length=20, null=True, default='') #null = true -> optional to put username here
     # should we store user_name? -> so it will associate with every image which gets uploaded
-    image = models.ImageField(upload_to='post_images',
-                              null=False)  # for image upload
+    image = models.ImageField(upload_to='post_images', null=False)  # for image upload
 
     # info for the database, us
     #created_at = models.DateTimeField(auto_now_add=True)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input, Button, Box } from '@chakra-ui/react';
 import axios from 'axios';
+//import CalculateView from './views";
 
 class ImageUpload extends Component {
 
