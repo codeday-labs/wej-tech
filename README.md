@@ -10,20 +10,21 @@ Use commands to install venv and make one
     - used to install the virtualenv library
 - `python3 -m venv env`
     - create a virtualenv named env
-- ``source env/Scripts/activate`
+- `source env/Scripts/activate`
+or `source env/bin/activate`
     - to activate the virtualenv that you just created
     - the activate file should be within this directory
 </aside>
 
-# Installing Django
+# Installing Django, Django REST Framework, Django Cors Headers, Djoser, PILLOW, Django JSON Web Token
 
 <aside>
 Use command to install Django
 
 Make sure to have your virtual environment activated before using this command!
 
-- `pip install django djangorestframework`
-    - used to install django and the rest framework
+- `pip install django-cors-headers django djangorestframework djangorestframework-simplejwt djoser Pillow`
+    - used to install django and the rest framework, Django Cors Headers, Djoser, PILLOW, Django JSON Web Token
 </aside>
 
 # Installing React + Babel + Webpack
@@ -52,6 +53,24 @@ Make sure to have your directory in the frontend folder! directory → `wej-tech
     - used to install all the libraries needed to run the webapp, these will install in the node module folder
 </aside>
 
+# Installing Charka UI
+
+<aside>
+- `npm i @chakra-ui/react @chakra-ui/theme @chakra-ui/theme-tools react-icons`
+    - run this command first, then continue with the second one.
+- `npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6`
+
+</aside>
+
+# Installing Axios, React Redux, React Router Dom
+
+<aside>
+    
+Make sure to have your directory in the frontend folder! directory → `wej-tech/project/frontend`
+-`npm install --force axios react-router-dom redux redux-devtools-extension react-redux@5.1.2 redux-thunk dotenv-webpack`
+
+</aside>
+
 # Running the Web App
 
 <aside>
@@ -61,7 +80,7 @@ Use commands to run the webapp
 
 Make sure to have your directory in the project folder! directory → `wej-tech/project`
 
-- `python manage.pyrunserver`
+- `python manage.py runserver`
     - this will run Django part of the webapp
 
 Make sure to have your directory in the frontend folder! directory → `wej-tech/project/frontend`
