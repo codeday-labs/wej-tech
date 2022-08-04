@@ -24,6 +24,8 @@ from rest_framework.parsers import MultiPartParser, FormParser
 #from rest_framework import status
 from .models import Image
 
+from rest_framework.permissions import AllowAny
+
 # Create your views here.
 # def placeholder(request):
 #     return HttpResponse("You are in the view of appexample")
@@ -40,6 +42,7 @@ class UserView(generics.CreateAPIView):
 
 
 class ListUserView(generics.ListAPIView):
+    permission_classes=[AllowAny]
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
