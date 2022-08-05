@@ -3,8 +3,10 @@ import { Link, Navigate } from 'react-router-dom';
 import { connect }  from 'react-redux';
 import { login } from '../actions/auth';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 import { ImageUpload } from '../ImageUpload';
+// import { ImageStore } from '../ImageStore';
 
 import {
     Heading, Input, Button, Text, Flex,
@@ -46,7 +48,9 @@ const Calculate = ({ isAuthenticated }) => {
         bgRepeat="no-repeat"
         >
             <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
-            <ImageUpload>Upload your Image</ImageUpload>
+                <Heading mb={3}>Upload Your Image Here</Heading>
+            <ImageUpload>Upload Your Image Here</ImageUpload>
+                
                 <Heading mb={3}>In construction</Heading>
                 <Text>The calculate tab is in-progress</Text>
             </Flex>
@@ -59,3 +63,9 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, { })( Calculate )
+
+
+
+//import Image from 'next/image';
+
+

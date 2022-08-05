@@ -49,6 +49,9 @@ const Navbar = ({ logout, isAuthenticated }) => {
                 <Link to ='/community'>
                     <Button>Community</Button>
                 </Link>
+                <Link to ='/imageupload'>
+                    <Button>Image Upload</Button>
+                </Link>
             </Flex>
             <Flex alignItems='right'>
                 {isAuthenticated ? authLinks() : guestLinks()}

@@ -1,7 +1,12 @@
 from lib2to3.pytree import Base
 from pyexpat import model
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+
+
+def upload_to(instance, filename):
+    return 'post_images/{filename}'.format(filename=filename)
 
 
 class UserAccountManager(BaseUserManager):
@@ -72,17 +77,18 @@ class Image(models.Model):
     # uploader is to answer the question "which user created that image?"
     # "User" because we need the info from another class
 
-    title = models.CharField(max_length=100, default='Me')
-    uploader = models.ForeignKey(
-        User, null=False, on_delete=models.CASCADE, default='1')
+    title = models.CharField(max_length=100, default='Test')
+    # uploader = models.ForeignKey(
+    #     User, null=True, on_delete=models.CASCADE)
     # user_name = models.CharField(max_length=20, null=True, default='') #null = true -> optional to put username here
     # should we store user_name? -> so it will associate with every image which gets uploaded
-    image = models.ImageField(upload_to='post_images',
-                              null=False)  # for image upload
+    image = models.ImageField(upload_to='post_images')  # for image upload
+    uploader = models.CharField(max_length=20, default=1)
 
     # info for the database, us
     #created_at = models.DateTimeField(auto_now_add=True)
 
     # if you want to print a user in the console for debugging, then you need this line
+
     def __str__(self):
         return self.title

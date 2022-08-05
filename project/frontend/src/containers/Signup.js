@@ -49,7 +49,9 @@ const Signup = ({ signup, isAuthenticated }) => {
     }
 
     return (
+
         <Flex
+
             height='100vh'
             alignItems='center'
             justifyContent='center'
@@ -91,6 +93,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                     <FormControl>
                         <FormLabel mb={3}>Password</FormLabel>
                         <Input
+                            
                             type='password'
                             name='password'
                             value={password}

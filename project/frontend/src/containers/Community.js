@@ -3,7 +3,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { connect }  from 'react-redux';
 import { login } from '../actions/auth';
 import axios from 'axios';
-
+import { ImageUpload } from '../ImageUpload';
 
 import {
     Heading, Input, Button, Text, Flex,
@@ -20,6 +20,8 @@ const Community = ({ isAuthenticated }) => {
             <Link to='/login'>
                 <Button colorScheme='whatsapp'>Login</Button>
             </Link>
+            <Heading mb={3}>Upload Your Image Here</Heading>
+            <ImageUpload>Upload Your Image Here</ImageUpload>
             <Text>
                 Don't have an account? <Link to='/reset-password'>Sign up</Link>
             </Text>
@@ -31,6 +33,8 @@ const Community = ({ isAuthenticated }) => {
         <Fragment>
             <Heading mb={3}>In construction</Heading>
             <Text>The community tab is in-progress, you are a member though</Text>
+            <Heading mb={3}>Upload Your Image Here</Heading>
+            <ImageUpload>Upload Your Image Here</ImageUpload>
         </Fragment>     
     )
 
