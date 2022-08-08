@@ -67,7 +67,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.user_name
 
 
-class Image(models.Model):
+class ImageHost(models.Model):
     # user info
     # uploader is to answer the question "which user created that image?"
     # "User" because we need the info from another class

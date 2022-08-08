@@ -1,6 +1,6 @@
 #Serializers is a way to convert Python data to API JSON format and vice-versa.
 from rest_framework import serializers
-from .models import User, Image
+from .models import User, ImageHost
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,7 +19,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
 class ImageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Image
+        model = ImageHost
         # id is automatically created, even though not created in the model itself
         # django creates it by itself.
         #fields = ('id', 'first_name', 'last_name', 'email', 'telephone', 'password', 'created_at')
@@ -31,7 +31,7 @@ class CreateImageSerializer(serializers.ModelSerializer):
     #     source='uploader.user_name', read_only=True)
 
     class Meta:
-        model = Image
+        model = ImageHost
         fields = ('title', 'image_file', 'uploader')
 
 
