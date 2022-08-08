@@ -1,137 +1,116 @@
-import React, { Component } from 'react';
-import { Input, Button, Box } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Input, Button, Box, FormControl, Flex, Heading, FormLabel, Text } from '@chakra-ui/react';
 import axios from 'axios';
 //import CalculateView from './views";
 
-class ImageUpload extends Component {
-
-  state = {
+export const ImageUpload = () => {
+  const [formData, setFormData] = useState({
     uploader: '',
-    //content: '',
-    image: null
-  };
+    title:'',
 
-  handleChange = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value
-    })
-  };
+  })
+  const [postImage, setPostImage] = useState(null);
 
-  handleImageChange = (e) => {
-    this.setState({
-      image: e.target.files[0]
-    })
-  };
+  const {uploader, title} = formData;
 
-  handleSubmit = (e) => {
+
+  const handleChange = e => setFormData ({ ...formData, [e.target.name]: e.target.value})
+
+  const handleImageChange = e => {
+    if ([e.target.name] == 'image') {  
+      setPostImage(e.target.files[0]);
+      // console.log(e.target.files);
+    };
+  }
+
+  const handleSubmit = e => {
+    
     e.preventDefault();
-    console.log(this.state);
-    let form_data = new FormData();
-    form_data.append('image', this.state.image, this.state.image.name);
-    form_data.append('uploader', this.state.title);
-    //form_data.append('content', this.state.content);
-    let url = '/appexample/calculate'; //work for all types of urls
-    //let url = 'http://localhost:8000/appexample/calculate';
-    axios.post(url, form_data, {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    })
-        .then(res => {
+    // console.log(this.state);
+    let newFormData = new FormData();
+    newFormData.append('title', formData.title);
+    newFormData.append('image_file', postImage);
+    newFormData.append('uploader', formData.uploader);
+    
+    let url = 'http://127.0.0.1:8000/appexample/upload';  //work for all types of urls
+    // let url = 'http://localhost:8000/appexample/calculate';
+    // axios.post(url, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
+    axios.post(url, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
+        .then((res) => {
           console.log(res.data);
         })
-        .catch(err => console.log(err))
+        .catch((err) => {
+          console.log(err);
+        })
+    
+    alert("Your file is being uploaded!")
   };
 
-  render() {
-    return (
-      <Box borderWidth={1} p={4} m={4} maxW="container.lg">
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <Input type="text" placeholder='Uploader' id='uploader' value={this.state.username} onChange={this.handleChange} required/>
-          </p>
-          {/* <p>
-            <Input type="text" placeholder='First Name' id='first_name' value={this.state.first_name} onChange={this.handleChange} required/>
+  // render() {
+  return (
+    <Flex
+    
+      height='100vh'
+      alignItems='center'
+      justifyContent='center'
+      bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
+      bgPosition="center"
+      bgRepeat="no-repeat"
+    >
+      <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
+        <Heading>Image Upload</Heading>
+        <Text mb={3}>Upload Your Image Here</Text>
+        <form onSubmit={e => handleSubmit(e)}> 
+          <FormControl>
+            <FormLabel mb={3}>Uploader</FormLabel>
+            <Input
 
-          </p> */}
-          <p>
-            <input type="file"
-                   id="image"
-                   accept="image/png, image/jpeg"  onChange={this.handleImageChange} required/>
-          </p>
-          <Button colorScheme="red" mt={4} onClick={this.handleSubmit}>Submit</Button>
+              type='text'
+              name='uploader'
+              value={uploader}
+              placeholder='Uploader'
+              onChange={e => handleChange(e)}
+              required
+              mb={3}
+              variant='filled'
+              
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel mb={3}>Title</FormLabel>
+              <Input
+                type='text'
+                name='title'
+                value={title}
+                placeholder='Title'
+                onChange={e => handleChange(e)}
+                required
+                mb={3}
+                variant='filled'
+                />
+          </FormControl>
+          <FormControl>
+            <FormLabel mb={3}>Image</FormLabel>
+              <Input
+                accept="image/*"
+                id="image"
+                onChange={e => handleImageChange(e)}
+                name="image"
+                type="file"
+              />
+          </FormControl>
+          <Button
+            type='submit'
+            colorScheme='whatsapp'
+             mb={6}
+          >
+          Submit
+          </Button>
         </form>
-      </Box>
-    );
-  }
-}
+      </Flex> 
+    </Flex>              
+    
+  );
+};
 
-export {ImageUpload};
-//export default ImageUpload; // 2 ways to export a file
-
-// import { Flex, Heading, Input, Button, Box, Text, Spacer, Stack, HStack, VStack, Center, Container } from '@chakra-ui/react';
-// import React, { Component } from 'react';
-// import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
-
-// const UploadImage = () => {
-//     return (
-//         <div>
-//             <Heading>this is the calculate page, yahoooo</Heading>
-//         </div>
-//     )
-// }
-
-// export default UploadImage
-
-// import { Input, FormControl, FormLabel, InputGroup, InputLeftElement, FormErrorMessage, Icon } from "@chakra-ui/react";
-// import { FiFile } from "react-icons/fi";
-// import { useController } from "react-hook-form";
-// import { useRef } from "react";
-
-// export const ImageUpload = ({ name, placeholder, acceptedFileTypes, control, children, isRequired = false }) => {
-// 	const inputRef = useRef();
-// 	const {
-// 		field: { ref, onChange, value, ...inputProps },
-// 		fieldState: { invalid, isTouched, isDirty },
-// 	} = useController({
-// 		name,
-// 		control,
-// 		rules: { required: isRequired },
-// 	});
-
-// 	return (
-// 		<FormControl isInvalid={invalid} isRequired>
-// 			<FormLabel htmlFor="writeUpFile">{children}</FormLabel>
-// 			<InputGroup>
-// 				<InputLeftElement
-// 					pointerEvents="none">
-// 					<Icon as={FiFile} />
-// 				</InputLeftElement>
-// 				<input type='file'
-// 					   onChange={(e) => onChange(e.target.files[0])}
-// 					   accept={acceptedFileTypes}
-// 					   name={name}
-// 					   ref={inputRef}
-// 					   {...inputProps}
-// 					   style={{display: 'none'}} />
-// 				<Input
-// 					placeholder={placeholder || "Your file ..."}
-// 					onClick={() => inputRef.current.click()}
-// 					// onChange={(e) => {}}
-// 					readOnly={true}
-// 					value={value && value.name || ''}
-// 				/>
-// 			</InputGroup>
-// 			<FormErrorMessage>
-// 				{invalid}
-// 			</FormErrorMessage>
-// 		</FormControl>
-// 	);
-// }
-
-// ImageUpload.defaultProps = {
-// 	acceptedFileTypes: '',
-// 	allowMultipleFiles: false,
-// };
-
-// export default ImageUpload;
+export default ImageUpload
