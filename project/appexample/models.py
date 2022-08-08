@@ -78,8 +78,14 @@ class Image(models.Model):
     # null = true -> optional to put username here
     name = models.ForeignKey(null=False,)
     # should we store user_name? -> so it will associate with every image which gets uploaded
+<<<<<<< Updated upstream
     image = models.ImageField(upload_to='post_images',
                               null=False)  # for image upload
+=======
+    image = models.ImageField(upload_to='post_images', null=False,
+                              blank=True)  # for image upload
+    uploader = models.CharField(max_length=20, default=1)
+>>>>>>> Stashed changes
 
     # info for the database, us
     # created_at = models.DateTimeField(auto_now_add=True)
