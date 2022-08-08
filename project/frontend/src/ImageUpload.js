@@ -3,6 +3,21 @@ import { Input, Button, Box } from '@chakra-ui/react';
 import axios from 'axios';
 //import CalculateView from './views";
 
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+   let ca = decodedCookie.split(';');
+   for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+   while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+      }
+    if (c.indexOf(name) == 0) {
+     return c.substring(name.length, c.length);
+     }
+   }
+  return "";
+ }
 class ImageUpload extends Component {
 
   state = {
@@ -32,9 +47,13 @@ class ImageUpload extends Component {
     //form_data.append('content', this.state.content);
     let url = '/appexample/calculate'; //work for all types of urls
     //let url = 'http://localhost:8000/appexample/calculate';
+    console.log(localStorage.getItem('access'))
+    console.log(document.cookie)
     axios.post(url, form_data, {
       headers: {
-        'content-type': 'multipart/form-data'
+        'content-type': 'multipart/form-data',
+        'Authorization':`JWT ${localStorage.getItem('access')}`,
+        'X-CSRFToken': getCookie('csrftoken'),
       }
     })
         .then(res => {
