@@ -104,8 +104,8 @@ class ImageUploadView(APIView):
         images_serializer = CreateImageSerializer(data=request.data)
         if images_serializer.is_valid():
             title = images_serializer.data.get('title')
-            import pdb
-            pdb.set_trace()
+            # import pdb
+            # pdb.set_trace()
             file = request.FILES['image_file']
             uploader = images_serializer.data.get('uploader')
 
