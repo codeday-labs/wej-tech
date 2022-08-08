@@ -50,7 +50,10 @@ const Navbar = ({ logout, isAuthenticated }) => {
                     <Button>Community</Button>
                 </Link>
                 <Link to ='/gettestpage'>
-                    <Button>GET TEST PAGE</Button>
+                    <Button>GET Request Test</Button>
+                </Link>
+                <Link to ='/imageupload'>
+                    <Button>POST Request Image</Button>
                 </Link>
             </Flex>
             <Flex alignItems='right'>

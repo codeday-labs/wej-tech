@@ -17,6 +17,7 @@ import Community from './containers/Community';
 import Calculate from './containers/Calculate';
 import CalculatePage from './containers/CalculatePage';
 import GetTestPage from './containers/GetTestPage';
+import ImageUpload from './ImageUpload';
 
 
 const AuthApp = () => {
@@ -36,6 +37,7 @@ const AuthApp = () => {
                                     <Route exact path='/calculate' element={<Calculate />}/>
                                     <Route exact path='/calculatepage' element={<CalculatePage />}/>
                                     <Route exact path='/gettestpage' element={<GetTestPage />} />
+                                    <Route exact path='/imageupload' element={<ImageUpload />}/>
                                 </Routes>
                             </Layout>
                     </Router>

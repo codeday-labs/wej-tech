@@ -25,10 +25,19 @@ class ImageSerializer(serializers.ModelSerializer):
         #fields = ('id', 'first_name', 'last_name', 'email', 'telephone', 'password', 'created_at')
         #model in class Meta just specifies the model to use, while fields can be a tuple or list holding the individual fields in the model, or takes in __all__ to just serialize all fields.
         fields = '__all__'
-        
-# makes sure data thats being sent in POST request is valid to create a new user
+
 class CreateImageSerializer(serializers.ModelSerializer):
+    # user_name = serializers.RelatedField(
+    #     source='uploader.user_name', read_only=True)
+
     class Meta:
         model = Image
-        fields = ('uploader', 'image')
+        fields = ('title', 'image_file', 'uploader')
+
+
+# makes sure data thats being sent in POST request is valid to create a new user
+# class CreateImageSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Image
+#         fields = ('uploader', 'image')
 
