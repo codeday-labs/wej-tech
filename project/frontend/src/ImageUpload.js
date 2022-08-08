@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Input, Button, Box, FormControl, Flex, Heading, FormLabel, Text } from '@chakra-ui/react';
 import axios from 'axios';
+//import CalculateView from './views";
 
 export const ImageUpload = () => {
   const [formData, setFormData] = useState({
