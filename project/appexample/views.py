@@ -28,7 +28,7 @@ import colorsys
 # from django.utils.decorators import method_decorator #How to disable Django's CSRF validation
 # from django.views.decorators.csrf import csrf_exempt #How to disable Django's CSRF validation
 
-
+from rest_framework.permissions import AllowAny
 # Create your views here.
 # def placeholder(request):
 #     return HttpResponse("You are in the view of appexample")
@@ -45,11 +45,13 @@ class UserView(generics.CreateAPIView):
 
 
 class ListUserView(generics.ListAPIView):
+    permission_classes=[AllowAny]
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
 class CreateUserView(APIView):
+    permission_classes=[AllowAny]
     parser_classes = (MultiPartParser, FormParser)
 
     serializer_class = CreateUserSerializer
@@ -82,6 +84,44 @@ class CreateUserView(APIView):
 
 # For images
 
+class ImageUploadView(APIView):
+    permission_classes=[AllowAny]
+    serializer_class = CreateImageSerializer
+    parser_classes = (MultiPartParser, FormParser)
+
+    def get(self, request, format=None):
+        if ImageHost.objects.all().exists():
+            images = ImageHost.objects.all()
+            serializer = ImageSerializer(images, many=True)
+
+            return Response(
+                {'images': serializer.data},
+                status=status.HTTP_200_OK
+            )
+        else:
+            return Response(
+                {'error': 'No images found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+    def post(self, request, format=None):
+        images_serializer = CreateImageSerializer(data=request.data)
+        if images_serializer.is_valid():
+            title = images_serializer.data.get('title')
+            # import pdb
+            # pdb.set_trace()
+            file = request.FILES['image_file']
+            uploader = images_serializer.data.get('uploader')
+
+            newImage = ImageHost(title=title, image_file=file, uploader=uploader)
+
+            newImage.save()
+            #obj = images_serializer.instance
+            return Response(ImageSerializer(newImage).data, status=status.HTTP_201_CREATED)
+        # else:
+        #     print('error', images_serializer.errors)
+        #     return Response(images_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 
 # class ImageView(generics.CreateAPIView):
 #     queryset = Image.objects.all()  # returns all user objects
