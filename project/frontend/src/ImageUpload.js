@@ -50,8 +50,8 @@ export const ImageUpload = () => {
     newFormData.append('image_file', postImage);
     newFormData.append('uploader', formData.uploader);
     
-    let url = 'http://127.0.0.1:8000/appexample/upload';  //work for all types of urls
-    // let url = 'http://localhost:8000/appexample/calculate';
+    //let url = 'http://127.0.0.1:8000/appexample/upload';  //work for all types of urls
+    let url = 'http://localhost:8000/appexample/calculate';
     // axios.post(url, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
     axios.post(url, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
         .then((res) => {
