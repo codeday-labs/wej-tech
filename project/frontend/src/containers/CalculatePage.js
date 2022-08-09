@@ -6,7 +6,7 @@ import { ImageUpload } from '../ImageUpload';
 const CalculatePage = () => {
     return (
         <div>
-            <ImageUpload></ImageUpload>
+            <ImageUpload/>
             <Heading>this is the calculate page, yahoooo</Heading>
         </div>
     )
