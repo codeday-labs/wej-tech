@@ -12,7 +12,5 @@ urlpatterns = [
     path('activate/<str:uid>/<str:token>', index),
     path('community', index),
     path('calculate', index),
-    path('calculatepage', index),
-    path('gettestpage', index),
-    path('imageupload', index),
+    path('calculatepage', index)
 ]

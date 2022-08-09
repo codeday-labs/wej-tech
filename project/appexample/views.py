@@ -25,9 +25,10 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from .models import ImageHost
 from PIL import Image
 import colorsys
+# from django.utils.decorators import method_decorator #How to disable Django's CSRF validation
+# from django.views.decorators.csrf import csrf_exempt #How to disable Django's CSRF validation
 
 from rest_framework.permissions import AllowAny
-
 # Create your views here.
 # def placeholder(request):
 #     return HttpResponse("You are in the view of appexample")
@@ -81,6 +82,7 @@ class CreateUserView(APIView):
 
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 
+# For images
 
 class ImageUploadView(APIView):
     permission_classes=[AllowAny]
@@ -120,13 +122,6 @@ class ImageUploadView(APIView):
         #     print('error', images_serializer.errors)
         #     return Response(images_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-
-
-# For images
-
 
 # class ImageView(generics.CreateAPIView):
 #     queryset = Image.objects.all()  # returns all user objects
@@ -174,17 +169,21 @@ class UploadImageView(APIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             uploader = serializer.data.get('uploader')
-            file = request.FILES['image_file']
+            image = serializer.data.get('image')
 
-            image = ImageHost(uploader=uploader, image_file=file)
+            image = ImageHost(uploader=uploader, image=image)
             image.save()
             return Response(ImageSerializer(image).data, status=status.HTTP_201_CREATED)
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 
+# @method_decorator(csrf_exempt, name='dispatch')
 class CalculateView(APIView):
     def post(self, request, format=None):
-        imagedb = ImageHost(uploader=null, image_file=request.FILES['image_file']) #keywords to search: django get image from request
-        imagedb.save()
+        print(request.data)
+        # imagedb = ImageHost(uploader="string", image=request.FILES['image']) #keywords to search: django get image from request
+        # imagedb = ImageHost(image=request.FILES['image'])
+        # print(request)
+        # imagedb.save()
 
         #figure out the code to put here to analyze the image
         countPixel = 0
@@ -195,7 +194,8 @@ class CalculateView(APIView):
             width, height = im.size
             return width, height
 
-        def isGreen(r, b, g):    #boolean function to determine if that pixel is green
+        def isGreen(hsv):    #boolean function to determine if that pixel is green
+            #1st method:
             # return ((r == 0, g == 128, b == 0) or (r == 152, g == 251, b == 152) or (r == 144, g == 238, b == 144) or (r == 143, g == 188, b == 143) or (r == 173, g == 255, b == 47) or
             #     (r == 0, g == 255, b == 0) or (r == 0, g == 255, b == 127) or (r == 127, g == 255, b == 0) or (r == 50, g == 205, b == 50) or(r == 0, g == 250, b == 154) or
             #     (r == 124, g == 252, b == 0) or (r == 60, g == 179, b == 113) or (r == 46, g == 139, b == 87) or (r == 34, g == 139, b == 34) or (r == 0, g == 100, b == 0) or
@@ -220,25 +220,38 @@ class CalculateView(APIView):
             #     (r == 30, g == 77, b == 43) or (r == 0, g == 102, b == 0) or (r == 27, g == 77, b == 62) or (r == 33, g == 66, b == 30) or (r == 24, g == 69, b == 59) or
             #     (r == 25, g == 89, b == 5) or (r == 0, g == 86, b == 63) or (r == 28, g == 53, b == 45) or (r == 1, g == 68, b == 33) or (r == 18, g == 53, b == 36) or
             #     (r == 0, g == 66, b == 37) or (r == 1, g == 50, b == 32))
-            #covert rgb to hls 
+            
+            #2nd method: covert rgb to hls  # https://hslpicker.com/#d4ff38
             #if this number is within this range of [80,150]:
             #   then this pixel is green
             #return boolean
-            hlscolor = colorsys.rgb_to_hls(r, g, b)
-            return (73 <= hlscolor <= 154)
+            # r,g,b = rgb #if pass rgb as parameter
+            # hslcolor = colorsys.rgb_to_hls(r, g, b) #dont need to use this line anymore because of using hsv instead
+            # print("Print hsl of the color: ", hslcolor[1])
+            # return (73 <= hslcolor[1] <= 154)
+
+            #3rd method: to make it run faster: use hsv instead of rgb:
+            h,s,v = hsv
+            return (73 <= h <= 154)
 
         def countGreenPixel(imageSubmitted):      #count pixels
+            # .convert('HSV') does the same as hslcolor = colorsys.rgb_to_hls(r, g, b) but HSV uses PIL
+            im = Image.open(imageSubmitted).convert('HSV') 
             width, height = getWH(imageSubmitted)
-            for row in range(0, height):
-                for col in range(0, width):
-                    if isGreen(imageSubmitted[row, col]): #imageSubmitted[row, col] : https://www.geeksforgeeks.org/python-pil-getpixel-method/
+            print("Print Width and Height of the Image:", width, height) #for debugging
+            countPixel = 0
+            for row in range(0, width - 1):
+                for col in range(0, height - 1):
+                    #print("Print row and col: ", row, col) #for debugging
+                    # print("Print the pixel of the image: ", im.getpixel((row,col)))
+                    if isGreen(im.getpixel((row, col))): #imageSubmitted[row, col] : https://www.geeksforgeeks.org/python-pil-getpixel-method/
                         countPixel = countPixel + 1
             return countPixel
 
-        def calculateO2():
+        def calculateO2(imageSubmitted):
             greenPixel = countGreenPixel(imageSubmitted)
             resOxygen = greenPixel * oxygenPerPixel
             return resOxygen
             
         print(request)
-        return Response(calculateO2())
+        return Response(calculateO2(request.FILES['image']))
