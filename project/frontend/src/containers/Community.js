@@ -10,6 +10,7 @@ import {
     FormControl, FormLabel, FormErrorMessage, FormHelperText,
   } from '@chakra-ui/react'
 
+import MenuBar from './BlogCreate';
 
 const Community = ({ isAuthenticated }) => {
 
@@ -28,10 +29,13 @@ const Community = ({ isAuthenticated }) => {
 
     const authView = () =>
     (
-        <Fragment>
-            <Heading mb={3}>In construction</Heading>
-            <Text>The community tab is in-progress, you are a member though</Text>
-        </Fragment>     
+        // <Fragment>
+        //     <Heading mb={3}>In construction</Heading>
+        //     <Text>The community tab is in-progress, you are a member though</Text>
+        // </Fragment>     
+        <div>
+            <BlogCreate></BlogCreate>
+        </div>
     )
 
     return (
