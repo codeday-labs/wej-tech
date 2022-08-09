@@ -72,9 +72,7 @@ class ImageHost(models.Model):
     # uploader is to answer the question "which user created that image?"
     # "User" because we need the info from another class
 
-    title = models.CharField(max_length=100, default='Test')
-    # uploader = models.ForeignKey(
-    #     User, null=True, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100, default='Me')
     # user_name = models.CharField(max_length=20, null=True, default='') #null = true -> optional to put username here
     # should we store user_name? -> so it will associate with every image which gets uploaded
     image_file = models.ImageField(upload_to='post_images', blank=True)  # for image upload

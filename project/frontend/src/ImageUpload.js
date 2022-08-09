@@ -3,12 +3,30 @@ import { Input, Button, Box, FormControl, Flex, Heading, FormLabel, Text } from 
 import axios from 'axios';
 //import CalculateView from './views";
 
+// Truc's Image Upload:
+// https://github.com/codeday-labs/wej-tech/blob/community-edit-1/project/frontend/src/ImageUpload.js
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+   let ca = decodedCookie.split(';');
+   for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+   while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+      }
+    if (c.indexOf(name) == 0) {
+     return c.substring(name.length, c.length);
+     }
+   }
+  return "";
+ }
+
 export const ImageUpload = () => {
   const [formData, setFormData] = useState({
-    uploader: '',
-    title:'',
-
-  })
+      uploader: '',
+      title:'',
+    })
   const [postImage, setPostImage] = useState(null);
 
   const {uploader, title} = formData;
