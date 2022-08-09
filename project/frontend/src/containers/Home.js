@@ -51,6 +51,7 @@ const Footer = () => (
     </>
 )
 
+
 const Home = () => {
     return (
         <div>

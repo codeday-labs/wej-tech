@@ -28,9 +28,7 @@ import colorsys
 # from django.utils.decorators import method_decorator #How to disable Django's CSRF validation
 # from django.views.decorators.csrf import csrf_exempt #How to disable Django's CSRF validation
 
-
 from rest_framework.permissions import AllowAny
-
 # Create your views here.
 # def placeholder(request):
 #     return HttpResponse("You are in the view of appexample")
@@ -84,6 +82,7 @@ class CreateUserView(APIView):
 
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 
+# For images
 
 class ImageUploadView(APIView):
     permission_classes=[AllowAny]
@@ -123,13 +122,6 @@ class ImageUploadView(APIView):
         #     print('error', images_serializer.errors)
         #     return Response(images_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-
-
-# For images
-
 
 # class ImageView(generics.CreateAPIView):
 #     queryset = Image.objects.all()  # returns all user objects
@@ -177,9 +169,9 @@ class UploadImageView(APIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             uploader = serializer.data.get('uploader')
-            file = request.FILES['image_file']
+            image = serializer.data.get('image')
 
-            image = ImageHost(uploader=uploader, image_file=file)
+            image = ImageHost(uploader=uploader, image=image)
             image.save()
             return Response(ImageSerializer(image).data, status=status.HTTP_201_CREATED)
         return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
@@ -187,6 +179,7 @@ class UploadImageView(APIView):
 # @method_decorator(csrf_exempt, name='dispatch')
 class CalculateView(APIView):
     def post(self, request, format=None):
+
         # my merge 8/9/2022:
         # imagedb = ImageHost(uploader=null, image_file=request.FILES['image_file']) #keywords to search: django get image from request
         # imagedb.save()
@@ -196,7 +189,6 @@ class CalculateView(APIView):
         # imagedb = ImageHost(image=request.FILES['image'])
         # print(request)
         # imagedb.save()
-
 
         #figure out the code to put here to analyze the image
         countPixel = 0

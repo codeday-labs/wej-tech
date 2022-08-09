@@ -13,9 +13,7 @@ import {
     SIGNUP_SUCCESS,
     ACTIVATION_SUCCESS,
     ACTIVATION_FAIL,
-    LOGOUT,
-    GET_TEST_SUCCESS,
-    GET_TEST_FAIL,
+    LOGOUT
 } from '../actions/types';
 
 const initialState = {
@@ -84,8 +82,6 @@ export default function(state = initialState, action) {
                 user: null
             }
 
-        case GET_TEST_SUCCESS:
-        case GET_TEST_FAIL:
         case PASSWORD_RESET_SUCCESS:
         case PASSWORD_RESET_FAIL:
         case PASSWORD_RESET_CONFIRM_SUCCESS:

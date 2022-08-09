@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'corsheaders',
+
     'appexample.apps.AppexampleConfig',
     'rest_framework',
     'djoser',
@@ -192,17 +194,9 @@ REST_FRAMEWORK = {
 
 # now we have JWT setup
 SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('JWT', 'Bearer',),
-    # below is old/original header types
-    # 'AUTH_HEADER_TYPES': ('JWT',),
+    'AUTH_HEADER_TYPES': ('JWT',),
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-
-    # added below settings because got error:
-    # AttributeError: type object 'BlacklistedToken' has no attribute 'objects'
-    'ROTATE_REFRESH_TOKENS': False,
-    'BLACKLIST_AFTER_ROTATION': False,
-    'UPDATE_LAST_LOGIN': False,
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1)
 }
 
 

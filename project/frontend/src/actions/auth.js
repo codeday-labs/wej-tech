@@ -14,9 +14,7 @@ import {
     SIGNUP_SUCCESS,
     ACTIVATION_FAIL,
     ACTIVATION_SUCCESS,
-    LOGOUT,
-    GET_TEST_FAIL,
-    GET_TEST_SUCCESS,
+    LOGOUT
 } from './types';
 
 export const checkAuthenticated = () => async dispatch => {
@@ -85,58 +83,6 @@ export const load_user = () => async dispatch => {
     }
 };
 
-export const display_user = () => async dispatch => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
-
-    try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/appexample/list-user-view/`, config);
-
-        dispatch({
-            type: GET_TEST_SUCCESS,
-            payload: res.data
-        })
-
-    } catch (err) {
-        dispatch({
-            type: GET_TEST_FAIL
-        })
-    } 
-};
-
-// export const display_user = () => async dispatch => {
-//     if (localStorage.getItem('access')) {
-//         const config = {
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization':`JWT ${localStorage.getItem('access')}`,
-//                 'Accept': 'application/json'
-//             }
-//         }
-
-//         try {
-//             const res = await axios.get(`${process.env.REACT_APP_API_URL}/appexample/list-user-view/`, config);
-
-//             dispatch({
-//                 type: GET_TEST_SUCCESS,
-//                 payload: res.data
-//             })
-
-//         } catch (err) {
-//             dispatch({
-//                 type: GET_TEST_FAIL
-//             })
-//         } 
-//     } else {
-//         dispatch({
-//             type: GET_TEST_FAIL
-//         })
-//     }
-// };
-
 export const login = (email, password) => async dispatch => {
     const config = {
         headers: {
@@ -147,7 +93,7 @@ export const login = (email, password) => async dispatch => {
     const body = JSON.stringify({ email, password })
 
     try {
-        const res = await axios.post(`http://127.0.0.1:8000/auth/jwt/create/`, body, config);
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/create/`, body, config);
 
         dispatch({
             type: LOGIN_SUCCESS,
