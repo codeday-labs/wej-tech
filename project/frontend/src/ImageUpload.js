@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Navigate } from 'react-router-dom';
-import { Input, Button, Box, FormControl, Flex, Heading, FormLabel, Text } from '@chakra-ui/react';
+import { Input, Button, Box, FormControl, Flex, Heading, FormLabel, Text, Progress } from '@chakra-ui/react';
 import axios from 'axios';
 //import CalculateView from './views";
 
@@ -29,12 +29,31 @@ export const ImageUpload = () => {
       title:'',
     })
   const [postImage, setPostImage] = useState(null);
-  const [isPosted, setIsPosted] = useState(false);
+  const [isCalculated, setIsCalculated] = useState("false");
+  const [isProgressing, setIsProgressing] = useState(false);
 
   const {uploader, title} = formData;
 
-  const [data, setData] = useState(null);
-  const [resOxygen, setResOxygen] = useState(null);
+  const [dataJSON, setDataJSON] = useState({
+    "resOxygen" : 1,
+    "resCarbon" : 2,
+    "milesDriven" : 3
+  })
+
+  const didMount = useRef(false);
+
+  useEffect (() => {
+    // if true that it has been initialized already
+    if (didMount.current) {
+      console.log("dataJSON has been changed")
+      setIsProgressing(false);
+    }
+    // if that it's initialized as false (first time)
+    else {
+      console.log("dataJSON has been initialized")
+      didMount.current = true
+    }
+  }, [dataJSON])
 
   const handleChange = e => setFormData ({ ...formData, [e.target.name]: e.target.value})
 
@@ -60,12 +79,12 @@ export const ImageUpload = () => {
     axios.post(url, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
         .then((res) => {
           const json = res.data
-          var parsed_json = JSON.parse(json)
-          console.log(parsed_json)
-          // setData(parsed_json)
-          // alert(res.data['resOxygen'])
-          // setData(res.data)
-          // setResOxygen(res.data.resOxygen)
+          const parsed_json = JSON.parse(json)
+          setDataJSON(parsed_json)
+          // setResOxygen(dataJSON.resOxygen)
+          // setResCarbon(dataJSON.resCarbon)
+          // setMilesDriven(dataJSON.milesDriven)
+
           // console.log(resOxygen)
         })
         .catch((err) => {
@@ -75,12 +94,17 @@ export const ImageUpload = () => {
     // alert("Your file is being uploaded!")
   };
 
-  if (isPosted) {
-    return <Navigate to='/gettestpage' />
-  }
+  // if (isPosted) {
+  //   return <Navigate to='/gettestpage' />
+  // }
+
+  // if (dataJSON.resOxygen != 1) {
+  //   setIsCalculated("true")
+  // }
 
   // render() {
   return (
+
     <Flex
       height='100vh'
       alignItems='center'
@@ -89,9 +113,19 @@ export const ImageUpload = () => {
       bgPosition="center"
       bgRepeat="no-repeat"
     >
+
       <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
-        <Text>{JSON.stringify(data)}</Text>
-        <Text>{resOxygen}</Text>
+        <Box bgColor='gray.400'>
+          <Text>{isCalculated}</Text>
+          <Heading>Analysis</Heading>
+          <Heading size='md'>Oxygen</Heading>
+          <Text>{dataJSON.resOxygen}</Text>
+          <Heading size='md'>Carbon</Heading>
+          <Text>{dataJSON.resCarbon}</Text>
+          <Heading size='md'>Equiv Miles Driven</Heading>
+          <Text>{dataJSON.milesDriven}</Text>
+          <Progress size ='lg' isIndeterminate={isProgressing} />
+        </Box>
         <Heading>Image Upload</Heading>
         <Text mb={3}>Upload Your Image Here</Text>
         <form onSubmit={e => handleSubmit(e)}> 
@@ -134,8 +168,9 @@ export const ImageUpload = () => {
               />
           </FormControl>
           <Button
-            type='submit'
-            colorScheme='whatsapp'
+              onClick={() => setIsProgressing(true)}  
+              type='submit'
+              colorScheme='whatsapp'
              mb={6}
           >
           Submit
