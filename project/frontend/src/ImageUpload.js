@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { Input, Button, Box, FormControl, Flex, Heading, FormLabel, Text } from '@chakra-ui/react';
 import axios from 'axios';
 //import CalculateView from './views";
@@ -28,9 +29,12 @@ export const ImageUpload = () => {
       title:'',
     })
   const [postImage, setPostImage] = useState(null);
+  const [isPosted, setIsPosted] = useState(false);
 
   const {uploader, title} = formData;
 
+  const [data, setData] = useState(null);
+  const [resOxygen, setResOxygen] = useState(null);
 
   const handleChange = e => setFormData ({ ...formData, [e.target.name]: e.target.value})
 
@@ -55,19 +59,29 @@ export const ImageUpload = () => {
     // axios.post(url, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
     axios.post(url, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
         .then((res) => {
-          console.log(res.data);
+          const json = res.data
+          var parsed_json = JSON.parse(json)
+          console.log(parsed_json)
+          // setData(parsed_json)
+          // alert(res.data['resOxygen'])
+          // setData(res.data)
+          // setResOxygen(res.data.resOxygen)
+          // console.log(resOxygen)
         })
         .catch((err) => {
           console.log(err);
         })
     
-    alert("Your file is being uploaded!")
+    // alert("Your file is being uploaded!")
   };
+
+  if (isPosted) {
+    return <Navigate to='/gettestpage' />
+  }
 
   // render() {
   return (
     <Flex
-    
       height='100vh'
       alignItems='center'
       justifyContent='center'
@@ -76,6 +90,8 @@ export const ImageUpload = () => {
       bgRepeat="no-repeat"
     >
       <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
+        <Text>{JSON.stringify(data)}</Text>
+        <Text>{resOxygen}</Text>
         <Heading>Image Upload</Heading>
         <Text mb={3}>Upload Your Image Here</Text>
         <form onSubmit={e => handleSubmit(e)}> 

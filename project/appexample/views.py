@@ -22,12 +22,12 @@ from .serializers import CreateUserSerializer, CreateImageSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 #from rest_framework.response import Response
 #from rest_framework import status
-from .models import ImageHost
+from .models import ImageHost, Calculation
 from PIL import Image
 import colorsys
 # from django.utils.decorators import method_decorator #How to disable Django's CSRF validation
 # from django.views.decorators.csrf import csrf_exempt #How to disable Django's CSRF validation
-
+import json
 
 from rest_framework.permissions import AllowAny
 
@@ -274,12 +274,14 @@ class CalculateView(APIView):
             resCarbon = greenPixel * carbonPerPixel
             numOfAcreInGreenPixels = greenPixel / 50181120
             milesdriven = numOfAcreInGreenPixels * 26000
-            print("O2 absorbed in this picture:  ",
-                  resOxygen, "pounds of O2/per year")
-            print("CO2 absorbed in this picture:  ",
-                  resCarbon, "pounds of CO2/per year", "which is equivalent to the removal of ", milesdriven, "car miles traveled per year")
-            # return resCarbon
-            return resOxygen
+
+            res = {
+                "resOxygen": str(resOxygen),
+                "resCarbon": str(resCarbon),
+                "milesDriven": str(milesdriven)
+            }
+
+            return json.dumps(res)
 
         # def calculateCO2(imageSubmitted):
         #     greenPixel = countGreenPixel(imageSubmitted)

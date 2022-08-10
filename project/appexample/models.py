@@ -85,6 +85,11 @@ class ImageHost(models.Model):
 
     def __str__(self):
         return self.title
+
+class Calculation(models.Model):
+    resOxygen = models.FloatField()
+    resCarbon = models.FloatField()
+    eqMilesDriven = models.FloatField()
         
 # mine
 # class Image(models.Model):
