@@ -15,4 +15,5 @@ urlpatterns = [
     path('calculatepage', index),
     path('gettestpage', index),
     path('imageupload', index),
+    path('analysis', index),
 ]

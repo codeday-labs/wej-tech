@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { Input, Button, Box, FormControl, Flex, Heading, FormLabel, Text, Progress } from '@chakra-ui/react';
 import axios from 'axios';
 //import CalculateView from './views";
@@ -24,6 +24,9 @@ function getCookie(cname) {
  }
 
 export const ImageUpload = () => {
+
+  let navigate = useNavigate();
+
   const [formData, setFormData] = useState({
       uploader: '',
       title:'',
@@ -47,6 +50,11 @@ export const ImageUpload = () => {
     if (didMount.current) {
       console.log("dataJSON has been changed")
       setIsProgressing(false);
+      navigate("/analysis", {state: { 
+        resOxygen: dataJSON.resOxygen,
+        resCarbon: dataJSON.resCarbon,
+        milesDriven: dataJSON.milesDriven
+      }})
     }
     // if that it's initialized as false (first time)
     else {
