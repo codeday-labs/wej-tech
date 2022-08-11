@@ -37,10 +37,12 @@ export const ImageUpload = () => {
 
   const {uploader, title} = formData;
 
+  const [imgDir, setImgDir] = useState("default_dir")
   const [dataJSON, setDataJSON] = useState({
     "resOxygen" : 1,
     "resCarbon" : 2,
-    "milesDriven" : 3
+    "milesDriven" : 3,
+    "imageDirectory" : "default"
   })
 
   const didMount = useRef(false);
@@ -53,7 +55,8 @@ export const ImageUpload = () => {
       navigate("/analysis", {state: { 
         resOxygen: dataJSON.resOxygen,
         resCarbon: dataJSON.resCarbon,
-        milesDriven: dataJSON.milesDriven
+        milesDriven: dataJSON.milesDriven,
+        imageDirectory: imgDir
       }})
     }
     // if that it's initialized as false (first time)
@@ -82,23 +85,28 @@ export const ImageUpload = () => {
     newFormData.append('uploader', formData.uploader);
     
     //let url = 'http://127.0.0.1:8000/appexample/upload';  //work for all types of urls
-    let url = 'http://localhost:8000/appexample/calculate';
-    // axios.post(url, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
-    axios.post(url, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
-        .then((res) => {
-          const json = res.data
-          const parsed_json = JSON.parse(json)
-          setDataJSON(parsed_json)
-          // setResOxygen(dataJSON.resOxygen)
-          // setResCarbon(dataJSON.resCarbon)
-          // setMilesDriven(dataJSON.milesDriven)
+    let urlCalculate = 'http://localhost:8000/appexample/calculate';
+    let urlUpload = 'http://localhost:8000/appexample/upload';
 
-          // console.log(resOxygen)
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-    
+    axios.post(urlUpload, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
+      .then((res) => {
+        console.log(res.data)
+        setImgDir(res.data.image_file)
+      })
+
+    axios.post(urlCalculate, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
+      .then((res) => {
+        const json = res.data
+        const parsed_json = JSON.parse(json)
+        setDataJSON(parsed_json)
+        // setResOxygen(dataJSON.resOxygen)
+        // setResCarbon(dataJSON.resCarbon)
+        // setMilesDriven(dataJSON.milesDriven)
+        // console.log(resOxygen)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     // alert("Your file is being uploaded!")
   };
 

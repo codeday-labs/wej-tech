@@ -50,9 +50,19 @@ const Analysis = ({isAuthenticated, props}) => {
             bgRepeat="no-repeat"
         >
             <HStack>
-                <Heading color='white'>
-                    Put Image Here with white border?
-                </Heading>
+
+                {/* Image */}
+                <Image
+                    width='750px'
+                    height='750px'
+                    fit='scale-down'
+                    bgColor='#EDF2F7'
+                    src={state.imageDirectory} 
+                    borderRadius='10px'
+                    border='5px solid white'
+                />
+
+                {/* Stats */}
                 <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
                     <Heading mb={12}>Your Image Analysis</Heading>
 
