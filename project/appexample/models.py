@@ -76,7 +76,8 @@ class ImageHost(models.Model):
     # user_name = models.CharField(max_length=20, null=True, default='') #null = true -> optional to put username here
     # should we store user_name? -> so it will associate with every image which gets uploaded
     image_file = models.ImageField(upload_to='post_images', blank=True)  # for image upload
-    uploader = models.CharField(max_length=20, default=1)
+    # uploader = models.CharField(max_length=20, default=1)
+    uploader = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
 
     # info for the database, us
     #created_at = models.DateTimeField(auto_now_add=True)

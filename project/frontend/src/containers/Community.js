@@ -11,6 +11,9 @@ import {
   } from '@chakra-ui/react'
 
 import MenuBar from './BlogCreate';
+import CommunityOption from './CommunityOptions';
+import EventSearch from './EventSearch';
+import MenuBar from './ReviewCreate';
 
 const Community = ({ isAuthenticated }) => {
 
@@ -34,7 +37,8 @@ const Community = ({ isAuthenticated }) => {
         //     <Text>The community tab is in-progress, you are a member though</Text>
         // </Fragment>     
         <div>
-            <BlogCreate></BlogCreate>
+            {/* <MenuBar></MenuBar> */}
+            <CommunityOption></CommunityOption>
         </div>
     )
 

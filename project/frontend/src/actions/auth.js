@@ -32,7 +32,8 @@ export const checkAuthenticated = () => async dispatch => {
         const body = JSON.stringify({ token: localStorage.getItem('access') })
 
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/verify/`, body, config)
+            // const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/jwt/verify/`, body, config)
+            const res = await axios.post(`/auth/jwt/verify/`, body, config)
 
             // if not get this code, then it means it's valid
             if (res.data.code !== 'token_not_valid') {
@@ -67,7 +68,9 @@ export const load_user = () => async dispatch => {
         }
 
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/users/me/`, config);
+            // const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/users/me/`, config);
+            const res = await axios.get(`/auth/users/me/`, config);
+
 
             dispatch({
                 type: USER_LOADED_SUCCESS,
@@ -93,7 +96,8 @@ export const display_user = () => async dispatch => {
     }
 
     try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/appexample/list-user-view/`, config);
+        // const res = await axios.get(`${process.env.REACT_APP_API_URL}/appexample/list-user-view/`, config);
+        const res = await axios.get(`/appexample/list-user-view/`, config);
 
         dispatch({
             type: GET_TEST_SUCCESS,
@@ -147,7 +151,8 @@ export const login = (email, password) => async dispatch => {
     const body = JSON.stringify({ email, password })
 
     try {
-        const res = await axios.post(`http://127.0.0.1:8000/auth/jwt/create/`, body, config);
+        //${process.env.REACT_APP_API_URL}
+        const res = await axios.post(`/auth/jwt/create/`, body, config);
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -163,6 +168,22 @@ export const login = (email, password) => async dispatch => {
     }
 };
 
+// function getCookie(cname) {
+//     let name = cname + "=";
+//     let decodedCookie = decodeURIComponent(document.cookie);
+//      let ca = decodedCookie.split(';');
+//      for(let i = 0; i <ca.length; i++) {
+//       let c = ca[i];
+//      while (c.charAt(0) == ' ') {
+//         c = c.substring(1);
+//         }
+//       if (c.indexOf(name) == 0) {
+//        return c.substring(name.length, c.length);
+//        }
+//      }
+//     return "";
+//    }
+   
 export const signup = (email, user_name, password, re_password) => async dispatch => {
     const config = {
         headers: {
@@ -173,7 +194,8 @@ export const signup = (email, user_name, password, re_password) => async dispatc
     const body = JSON.stringify({ email, user_name, password, re_password })
 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
+        // const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
+        const res = await axios.post(`/auth/users/`, body, config);
 
         dispatch({
             type: SIGNUP_SUCCESS,
@@ -199,7 +221,8 @@ export const verify = (uid, token) => async dispatch => {
     const body = JSON.stringify({ uid, token })
 
     try {
-        await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/activation/`, body, config);
+        // await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/activation/`, body, config);
+        await axios.post(`/auth/users/activation/`, body, config);
 
         dispatch({
             type: ACTIVATION_SUCCESS
@@ -223,7 +246,8 @@ export const reset_password = (email) => async dispatch => {
     const body = JSON.stringify({ email })
 
     try {
-        await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/reset_password/`, body, config)
+        // await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/reset_password/`, body, config)
+        await axios.post(`/auth/users/reset_password/`, body, config)
 
         dispatch({
             type: PASSWORD_RESET_SUCCESS
@@ -248,7 +272,8 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
     const body = JSON.stringify({ uid, token, new_password, re_new_password })
 
     try {
-        await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/reset_password_confirm/`, body, config)
+        // await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/reset_password_confirm/`, body, config)
+        await axios.post(`/auth/users/reset_password_confirm/`, body, config)
 
         dispatch({
             type: PASSWORD_RESET_CONFIRM_SUCCESS
