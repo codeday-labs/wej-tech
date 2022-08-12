@@ -5,7 +5,7 @@ import { InfoOutlineIcon } from '@chakra-ui/icons'
 import {
     Heading, Input, Button, Text, Flex,
     FormControl, FormLabel, FormErrorMessage, FormHelperText,
-    HStack, Image,
+    HStack, Image, Stack, Center,
 
     Popover,
     PopoverTrigger,
@@ -50,7 +50,6 @@ const Analysis = ({isAuthenticated, props}) => {
             bgRepeat="no-repeat"
         >
             <HStack>
-
                 {/* Image */}
                 <Image
                     width='750px'
@@ -73,158 +72,160 @@ const Analysis = ({isAuthenticated, props}) => {
                         borderRadius='10px'
                         border='2px solid white'
                         padding='1rem'
-
                     >
+                        <HStack mb={2.5}>
+                            <Stack>
+                                <Popover>
+                                    <PopoverTrigger>
+                                            <HStack cursor='pointer'>
+                                                <StatLabel fontSize='md'>Oxygen</StatLabel>
+                                                {/* <Heading as='h3' size='md'>Oxygen</Heading> */}
+                                                <InfoOutlineIcon />
+                                            </HStack>
+                                    </PopoverTrigger>
+                                    <PopoverContent>
+                                        <PopoverCloseButton />
+                                        <PopoverHeader>What is this calculation?</PopoverHeader>
+                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                    </PopoverContent>
+                                </Popover>
+                                <StatNumber>{state.resOxygen}</StatNumber>
+                                <StatHelpText>Subtle Text</StatHelpText>
+
+
+                                <Popover>
+                                    <PopoverTrigger>
+                                            <HStack cursor='pointer'>
+                                                <StatLabel fontSize='md'>Carbon</StatLabel>
+                                                {/* <Heading as='h3' size='md'>Carbon</Heading> */}
+                                                <InfoOutlineIcon />
+                                            </HStack>
+                                    </PopoverTrigger>
+                                    <PopoverContent>
+                                        <PopoverCloseButton />
+                                        <PopoverHeader>What is this calculation?</PopoverHeader>
+                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                    </PopoverContent>
+                                </Popover>
+                                <StatNumber>{state.resCarbon}</StatNumber>
+                                <StatHelpText>Subtle Text</StatHelpText>
+
+                                <Popover>
+                                    <PopoverTrigger>
+                                            <HStack cursor='pointer'>
+                                                <StatLabel fontSize='md'>Equiv Miles Driven</StatLabel>
+                                                {/* <Heading as='h3' size='md'>Equiv Miles Driven</Heading> */}
+                                                <InfoOutlineIcon />
+                                            </HStack>
+                                    </PopoverTrigger>
+                                    <PopoverContent>
+                                        <PopoverCloseButton />
+                                        <PopoverHeader>What is this calculation?</PopoverHeader>
+                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                    </PopoverContent>
+                                </Popover>
+                                <StatNumber>{state.milesDriven}</StatNumber>
+                                <StatHelpText>Subtle Text</StatHelpText>
+
+
+                                <Popover>
+                                    <PopoverTrigger>
+                                            <HStack cursor='pointer'>
+                                                <StatLabel fontSize='md'>Oxygen Generated Per Person Per Year</StatLabel>
+                                                {/* <Heading as='h3' size='md'>Oxygen Generated Per Person Per Year</Heading> */}
+                                                <InfoOutlineIcon />
+                                            </HStack>
+                                    </PopoverTrigger>
+                                    <PopoverContent>
+                                        <PopoverCloseButton />
+                                        <PopoverHeader>What is this calculation?</PopoverHeader>
+                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                    </PopoverContent>
+                                </Popover>
+                                <StatNumber>{state.oxygenPerPerson}</StatNumber>
+                                <StatHelpText>Subtle Text</StatHelpText>
+                            </Stack>
+                        
+                            <Stack>
+                                <Popover>
+                                    <PopoverTrigger>
+                                            <HStack cursor='pointer'>
+                                                <StatLabel fontSize='md'>Water Needed in Gallons Weekly</StatLabel>
+                                                {/* <Heading as='h3' size='md'>Water Needed in Gallons Weekly</Heading> */}
+                                                <InfoOutlineIcon />
+                                            </HStack>
+                                    </PopoverTrigger>
+                                    <PopoverContent>
+                                        <PopoverCloseButton />
+                                        <PopoverHeader>What is this calculation?</PopoverHeader>
+                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                    </PopoverContent>
+                                </Popover>
+                                <StatNumber>{state.waterNeeded}</StatNumber>
+                                <StatHelpText>Subtle Text</StatHelpText>
+
+
+
+                                <Popover>
+                                    <PopoverTrigger>
+                                            <HStack cursor='pointer'>
+                                                <StatLabel fontSize='md'>Water Saved Daily in Gallons</StatLabel>
+                                                {/* <Heading as='h3' size='md'>Water Saved Daily in Gallons</Heading> */}
+                                                <InfoOutlineIcon />
+                                            </HStack>
+                                    </PopoverTrigger>
+                                    <PopoverContent>
+                                        <PopoverCloseButton />
+                                        <PopoverHeader>What is this calculation?</PopoverHeader>
+                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                    </PopoverContent>
+                                </Popover>
+                                <StatNumber>{state.waterSaved}</StatNumber>
+                                <StatHelpText>Subtle Text</StatHelpText>
+
+
+
+                                <Popover>
+                                    <PopoverTrigger>
+                                            <HStack cursor='pointer'>
+                                                <StatLabel fontSize='md'>Pollutants Absorbed by Vegetation</StatLabel>
+                                                {/* <Heading as='h3' size='md'>Pollutants Absorbed by Vegetation</Heading> */}
+                                                <InfoOutlineIcon />
+                                            </HStack>
+                                    </PopoverTrigger>
+                                    <PopoverContent>
+                                        <PopoverCloseButton />
+                                        <PopoverHeader>What is this calculation?</PopoverHeader>
+                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                    </PopoverContent>
+                                </Popover>
+                                <StatNumber>{state.pollutantsAbsorbed}</StatNumber>
+                                <StatHelpText>Subtle Text</StatHelpText>
+
+
+                                <Popover>
+                                    <PopoverTrigger>
+                                            <HStack cursor='pointer'>
+                                                <StatLabel fontSize='md'>Amount of Cooling Provided</StatLabel>
+                                                {/* <Heading as='h3' size='md'>Pollutants Absorbed by Vegetation</Heading> */}
+                                                <InfoOutlineIcon />
+                                            </HStack>
+                                    </PopoverTrigger>
+                                    <PopoverContent>
+                                        <PopoverCloseButton />
+                                        <PopoverHeader>What is this calculation?</PopoverHeader>
+                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                    </PopoverContent>
+                                </Popover>
+                                <StatNumber>{state.cooling}</StatNumber>
+                                <StatHelpText>Subtle Text</StatHelpText>
+                            </Stack>
+                        </HStack>
+
                         <Popover>
                             <PopoverTrigger>
                                     <HStack cursor='pointer'>
-                                        <StatLabel fontSize='2xl'>Oxygen</StatLabel>
-                                        {/* <Heading as='h3' size='md'>Oxygen</Heading> */}
-                                        <InfoOutlineIcon />
-                                    </HStack>
-                            </PopoverTrigger>
-                            <PopoverContent>
-                                <PopoverCloseButton />
-                                <PopoverHeader>What is this calculation?</PopoverHeader>
-                                <PopoverBody>Explain significance of this calculation here</PopoverBody>
-                            </PopoverContent>
-                        </Popover>
-                        <StatNumber>{state.resOxygen}</StatNumber>
-                        <StatHelpText>Subtle Text</StatHelpText>
-
-
-                        <Popover>
-                            <PopoverTrigger>
-                                    <HStack cursor='pointer'>
-                                        <StatLabel fontSize='2xl'>Carbon</StatLabel>
-                                        {/* <Heading as='h3' size='md'>Carbon</Heading> */}
-                                        <InfoOutlineIcon />
-                                    </HStack>
-                            </PopoverTrigger>
-                            <PopoverContent>
-                                <PopoverCloseButton />
-                                <PopoverHeader>What is this calculation?</PopoverHeader>
-                                <PopoverBody>Explain significance of this calculation here</PopoverBody>
-                            </PopoverContent>
-                        </Popover>
-                        <StatNumber>{state.Carbon}</StatNumber>
-                        <StatHelpText>Subtle Text</StatHelpText>
-
-                        <Popover>
-                            <PopoverTrigger>
-                                    <HStack cursor='pointer'>
-                                        <StatLabel fontSize='2xl'>Equiv Miles Driven</StatLabel>
-                                        {/* <Heading as='h3' size='md'>Equiv Miles Driven</Heading> */}
-                                        <InfoOutlineIcon />
-                                    </HStack>
-                            </PopoverTrigger>
-                            <PopoverContent>
-                                <PopoverCloseButton />
-                                <PopoverHeader>What is this calculation?</PopoverHeader>
-                                <PopoverBody>Explain significance of this calculation here</PopoverBody>
-                            </PopoverContent>
-                        </Popover>
-                        <StatNumber>{state.milesDriven}</StatNumber>
-                        <StatHelpText>Subtle Text</StatHelpText>
-
-
-                        <Popover>
-                            <PopoverTrigger>
-                                    <HStack cursor='pointer'>
-                                        <StatLabel fontSize='2xl'>Oxygen Generated Per Person Per Year</StatLabel>
-                                        {/* <Heading as='h3' size='md'>Oxygen Generated Per Person Per Year</Heading> */}
-                                        <InfoOutlineIcon />
-                                    </HStack>
-                            </PopoverTrigger>
-                            <PopoverContent>
-                                <PopoverCloseButton />
-                                <PopoverHeader>What is this calculation?</PopoverHeader>
-                                <PopoverBody>Explain significance of this calculation here</PopoverBody>
-                            </PopoverContent>
-                        </Popover>
-                        <StatNumber>{state.oxygenPerPerson}</StatNumber>
-                        <StatHelpText>Subtle Text</StatHelpText>
-
-
-
-                        <Popover>
-                            <PopoverTrigger>
-                                    <HStack cursor='pointer'>
-                                        <StatLabel fontSize='2xl'>Water Needed in Gallons Weekly</StatLabel>
-                                        {/* <Heading as='h3' size='md'>Water Needed in Gallons Weekly</Heading> */}
-                                        <InfoOutlineIcon />
-                                    </HStack>
-                            </PopoverTrigger>
-                            <PopoverContent>
-                                <PopoverCloseButton />
-                                <PopoverHeader>What is this calculation?</PopoverHeader>
-                                <PopoverBody>Explain significance of this calculation here</PopoverBody>
-                            </PopoverContent>
-                        </Popover>
-                        <StatNumber>{state.waterNeeded}</StatNumber>
-                        <StatHelpText>Subtle Text</StatHelpText>
-
-
-
-                        <Popover>
-                            <PopoverTrigger>
-                                    <HStack cursor='pointer'>
-                                        <StatLabel fontSize='2xl'>Water Saved Daily in Gallons</StatLabel>
-                                        {/* <Heading as='h3' size='md'>Water Saved Daily in Gallons</Heading> */}
-                                        <InfoOutlineIcon />
-                                    </HStack>
-                            </PopoverTrigger>
-                            <PopoverContent>
-                                <PopoverCloseButton />
-                                <PopoverHeader>What is this calculation?</PopoverHeader>
-                                <PopoverBody>Explain significance of this calculation here</PopoverBody>
-                            </PopoverContent>
-                        </Popover>
-                        <StatNumber>{state.waterSaved}</StatNumber>
-                        <StatHelpText>Subtle Text</StatHelpText>
-
-
-
-                        <Popover>
-                            <PopoverTrigger>
-                                    <HStack cursor='pointer'>
-                                        <StatLabel fontSize='2xl'>Pollutants Absorbed by Vegetation</StatLabel>
-                                        {/* <Heading as='h3' size='md'>Pollutants Absorbed by Vegetation</Heading> */}
-                                        <InfoOutlineIcon />
-                                    </HStack>
-                            </PopoverTrigger>
-                            <PopoverContent>
-                                <PopoverCloseButton />
-                                <PopoverHeader>What is this calculation?</PopoverHeader>
-                                <PopoverBody>Explain significance of this calculation here</PopoverBody>
-                            </PopoverContent>
-                        </Popover>
-                        <StatNumber>{state.pollutantsAbsorbed}</StatNumber>
-                        <StatHelpText>Subtle Text</StatHelpText>
-
-
-                        <Popover>
-                            <PopoverTrigger>
-                                    <HStack cursor='pointer'>
-                                        <StatLabel fontSize='2xl'>Amount of Cooling Provided</StatLabel>
-                                        {/* <Heading as='h3' size='md'>Pollutants Absorbed by Vegetation</Heading> */}
-                                        <InfoOutlineIcon />
-                                    </HStack>
-                            </PopoverTrigger>
-                            <PopoverContent>
-                                <PopoverCloseButton />
-                                <PopoverHeader>What is this calculation?</PopoverHeader>
-                                <PopoverBody>Explain significance of this calculation here</PopoverBody>
-                            </PopoverContent>
-                        </Popover>
-                        <StatNumber>{state.cooling}</StatNumber>
-                        <StatHelpText>Subtle Text</StatHelpText>
-
-
-                        <Popover>
-                            <PopoverTrigger>
-                                    <HStack cursor='pointer'>
-                                        <StatLabel fontSize='2xl'>Home Value Increase in Percentage</StatLabel>
+                                        <StatLabel fontSize='md'>Home Value Increase in Percentage</StatLabel>
                                         {/* <Heading as='h3' size='md'>Pollutants Absorbed by Vegetation</Heading> */}
                                         <InfoOutlineIcon />
                                     </HStack>
@@ -237,8 +238,6 @@ const Analysis = ({isAuthenticated, props}) => {
                         </Popover>
                         <StatNumber>{state.homeValue}</StatNumber>
                         <StatHelpText>Subtle Text</StatHelpText>
-
-
 
                     </Stat>
                     
