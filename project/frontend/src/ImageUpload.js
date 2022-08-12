@@ -42,6 +42,13 @@ export const ImageUpload = () => {
     "resOxygen" : 1,
     "resCarbon" : 2,
     "milesDriven" : 3,
+    "oxygenPerPerson" : 4,
+    "waterNeeded" : 5,
+    "waterSaved" : 6,
+    "pollutantsAbsorbed" : 7,
+    "cooling" : 8,
+    "homeValue" : 9,
+
     "imageDirectory" : "default"
   })
 
@@ -56,6 +63,12 @@ export const ImageUpload = () => {
         resOxygen: dataJSON.resOxygen,
         resCarbon: dataJSON.resCarbon,
         milesDriven: dataJSON.milesDriven,
+        oxygenPerPerson: dataJSON.oxygenPerPerson,
+        waterNeeded: dataJSON.waterNeeded,
+        waterSaved: dataJSON.waterSaved,
+        pollutantsAbsorbed: dataJSON.pollutantsAbsorbed,
+        cooling: dataJSON.cooling,
+        homeValue: dataJSON.homeValue,
         imageDirectory: imgDir
       }})
     }
@@ -137,9 +150,21 @@ export const ImageUpload = () => {
           <Heading size='md'>Oxygen</Heading>
           <Text>{dataJSON.resOxygen}</Text>
           <Heading size='md'>Carbon</Heading>
-          <Text>{dataJSON.resCarbon}</Text>
+          <Text>{dataJSON.resCarbon}</Text> 
           <Heading size='md'>Equiv Miles Driven</Heading>
           <Text>{dataJSON.milesDriven}</Text>
+          <Heading size='md'>Oxygen Generated Per Person Per Year</Heading>
+          <Text>{dataJSON.oxygenPerPerson}</Text>
+          <Heading size='md'>Water Needed in Gallons Weekly</Heading>
+          <Text>{dataJSON.waterNeeded}</Text>
+          <Heading size='md'>Water Saved Daily in Gallons</Heading>
+          <Text>{dataJSON.waterSaved}</Text>
+          <Heading size='md'>Pollutants Absorbed by Vegetation</Heading>
+          <Text>{dataJSON.pollutantsAbsorbed}</Text>
+          <Heading size='md'>Amount of Cooling Provided</Heading>
+          <Text>{dataJSON.cooling}</Text>
+          <Heading size='md'>Home Value Increase in Percentage</Heading>
+          <Text>{dataJSON.homeValue}</Text>
           <Progress size ='lg' isIndeterminate={isProgressing} />
         </Box>
         <Heading>Image Upload</Heading>
