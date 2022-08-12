@@ -78,53 +78,53 @@ const Analysis = ({isAuthenticated, props}) => {
                                 <Popover>
                                     <PopoverTrigger>
                                             <HStack cursor='pointer'>
-                                                <StatLabel fontSize='md'>Oxygen</StatLabel>
+                                                <StatLabel fontSize='md'>Oxygen Generated</StatLabel>
                                                 {/* <Heading as='h3' size='md'>Oxygen</Heading> */}
                                                 <InfoOutlineIcon />
                                             </HStack>
                                     </PopoverTrigger>
                                     <PopoverContent>
                                         <PopoverCloseButton />
-                                        <PopoverHeader>What is this calculation?</PopoverHeader>
-                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                        <PopoverHeader>Calculations provide pounds of oxygen particles generated per year</PopoverHeader>
+                                        <PopoverBody>This calcuation provides an estimate of oxygen being generated from this image, given that roughly per tree there are 260 pounds of oxygen generated yearly.</PopoverBody>
                                     </PopoverContent>
                                 </Popover>
-                                <StatNumber>{state.resOxygen}</StatNumber>
+                                <StatNumber>{state.resOxygen}{" pounds/year"}</StatNumber>
                                 <StatHelpText>Subtle Text</StatHelpText>
 
 
                                 <Popover>
                                     <PopoverTrigger>
                                             <HStack cursor='pointer'>
-                                                <StatLabel fontSize='md'>Carbon</StatLabel>
+                                                <StatLabel fontSize='md'>Carbon Absorbed</StatLabel>
                                                 {/* <Heading as='h3' size='md'>Carbon</Heading> */}
                                                 <InfoOutlineIcon />
                                             </HStack>
                                     </PopoverTrigger>
                                     <PopoverContent>
                                         <PopoverCloseButton />
-                                        <PopoverHeader>What is this calculation?</PopoverHeader>
-                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                        <PopoverHeader>Pounds of Carbon Dioxide (CO2) being absorbed in this image per year.</PopoverHeader>
+                                        <PopoverBody>This calculation provide an estimate of how much CO2 this image absorbs per year, given that one tree absorbs 48 pounds of CO2 per year.</PopoverBody>
                                     </PopoverContent>
                                 </Popover>
-                                <StatNumber>{state.resCarbon}</StatNumber>
+                                <StatNumber>{state.resresCarbon}{" pounds/year"}</StatNumber>
                                 <StatHelpText>Subtle Text</StatHelpText>
 
                                 <Popover>
                                     <PopoverTrigger>
                                             <HStack cursor='pointer'>
-                                                <StatLabel fontSize='md'>Equiv Miles Driven</StatLabel>
+                                                <StatLabel fontSize='md'>CO2 Absorbed in Equivelance to Miles Driven</StatLabel>
                                                 {/* <Heading as='h3' size='md'>Equiv Miles Driven</Heading> */}
                                                 <InfoOutlineIcon />
                                             </HStack>
                                     </PopoverTrigger>
                                     <PopoverContent>
                                         <PopoverCloseButton />
-                                        <PopoverHeader>What is this calculation?</PopoverHeader>
-                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                        <PopoverHeader>Amount of CO2 being absorbed per year that is equivantent to this number of miles being dirven. </PopoverHeader>
+                                        <PopoverBody>This calculation provide an estimate of how much CO2 this image absorbs but using miles driven metric. This is based on the estimation that one acre of trees absorb CO2 the equivalent of driving a car 26,000 miles per year.</PopoverBody>
                                     </PopoverContent>
                                 </Popover>
-                                <StatNumber>{state.milesDriven}</StatNumber>
+                                <StatNumber>{state.milesDriven}{" miles/year"}</StatNumber>
                                 <StatHelpText>Subtle Text</StatHelpText>
 
 
@@ -138,11 +138,11 @@ const Analysis = ({isAuthenticated, props}) => {
                                     </PopoverTrigger>
                                     <PopoverContent>
                                         <PopoverCloseButton />
-                                        <PopoverHeader>What is this calculation?</PopoverHeader>
-                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                        <PopoverHeader>Amount of oxygen generated from this image for this many people per year.</PopoverHeader>
+                                        <PopoverBody>This calculations provide an estimate based on the estimation that one acre of trees provide enough oxygen for a family of four in one year.  </PopoverBody>
                                     </PopoverContent>
                                 </Popover>
-                                <StatNumber>{state.oxygenPerPerson}</StatNumber>
+                                <StatNumber>{state.oxygenPerPerson}{" persons/year"}</StatNumber>
                                 <StatHelpText>Subtle Text</StatHelpText>
                             </Stack>
                         
@@ -150,18 +150,18 @@ const Analysis = ({isAuthenticated, props}) => {
                                 <Popover>
                                     <PopoverTrigger>
                                             <HStack cursor='pointer'>
-                                                <StatLabel fontSize='md'>Water Needed in Gallons Weekly</StatLabel>
+                                                <StatLabel fontSize='md'>Water Needed</StatLabel>
                                                 {/* <Heading as='h3' size='md'>Water Needed in Gallons Weekly</Heading> */}
                                                 <InfoOutlineIcon />
                                             </HStack>
                                     </PopoverTrigger>
                                     <PopoverContent>
                                         <PopoverCloseButton />
-                                        <PopoverHeader>What is this calculation?</PopoverHeader>
-                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                        <PopoverHeader>Estimated amount of water needed for vegetation in this image to survive weekly.</PopoverHeader>
+                                        <PopoverBody>This calculations is an estimate of how many gallons of water is needed weekly based on the estimation that most trees need a minimum of 15 gallons of water per week. </PopoverBody>
                                     </PopoverContent>
                                 </Popover>
-                                <StatNumber>{state.waterNeeded}</StatNumber>
+                                <StatNumber>{state.waterNeeded}{"Gallons/Week"}</StatNumber>
                                 <StatHelpText>Subtle Text</StatHelpText>
 
 
@@ -169,18 +169,18 @@ const Analysis = ({isAuthenticated, props}) => {
                                 <Popover>
                                     <PopoverTrigger>
                                             <HStack cursor='pointer'>
-                                                <StatLabel fontSize='md'>Water Saved Daily in Gallons</StatLabel>
+                                                <StatLabel fontSize='md'>Water Saved and Generated Daily</StatLabel>
                                                 {/* <Heading as='h3' size='md'>Water Saved Daily in Gallons</Heading> */}
                                                 <InfoOutlineIcon />
                                             </HStack>
                                     </PopoverTrigger>
                                     <PopoverContent>
                                         <PopoverCloseButton />
-                                        <PopoverHeader>What is this calculation?</PopoverHeader>
-                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                        <PopoverHeader>Estimated water generated by trees from evapotranspiration</PopoverHeader>
+                                        <PopoverBody>This calculations is based on the estimation that one tree release 200-450 gallons of water per day depending on variety and size.</PopoverBody>
                                     </PopoverContent>
                                 </Popover>
-                                <StatNumber>{state.waterSaved}</StatNumber>
+                                <StatNumber>{state.waterSaved}{" Gallons/Day"}</StatNumber>
                                 <StatHelpText>Subtle Text</StatHelpText>
 
 
@@ -188,18 +188,18 @@ const Analysis = ({isAuthenticated, props}) => {
                                 <Popover>
                                     <PopoverTrigger>
                                             <HStack cursor='pointer'>
-                                                <StatLabel fontSize='md'>Pollutants Absorbed by Vegetation</StatLabel>
+                                                <StatLabel fontSize='md'>Pollutants Absorbed</StatLabel>
                                                 {/* <Heading as='h3' size='md'>Pollutants Absorbed by Vegetation</Heading> */}
                                                 <InfoOutlineIcon />
                                             </HStack>
                                     </PopoverTrigger>
                                     <PopoverContent>
                                         <PopoverCloseButton />
-                                        <PopoverHeader>What is this calculation?</PopoverHeader>
-                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                        <PopoverHeader>Estimated pollutants being absorbed by this image which includes: NOx,Ammonia, SOx and Ozone.</PopoverHeader>
+                                        <PopoverBody>This is based on the calculations that one tree absorbs approximately 10 pound of pollutants every year.</PopoverBody>
                                     </PopoverContent>
                                 </Popover>
-                                <StatNumber>{state.pollutantsAbsorbed}</StatNumber>
+                                <StatNumber>{state.pollutantsAbsorbed}{" /Yearly"}</StatNumber>
                                 <StatHelpText>Subtle Text</StatHelpText>
 
 
@@ -213,11 +213,11 @@ const Analysis = ({isAuthenticated, props}) => {
                                     </PopoverTrigger>
                                     <PopoverContent>
                                         <PopoverCloseButton />
-                                        <PopoverHeader>What is this calculation?</PopoverHeader>
-                                        <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                        <PopoverHeader>Estimated amount of temperature degrees cooled in Fahrenheit due to shade and transpiration</PopoverHeader>
+                                        <PopoverBody>This calculation is based on the estimation that one tree can cool down its surroundings by about 2.5 degrees Fahrenheit. </PopoverBody>
                                     </PopoverContent>
                                 </Popover>
-                                <StatNumber>{state.cooling}</StatNumber>
+                                <StatNumber>{state.cooling}{"°F"}</StatNumber>
                                 <StatHelpText>Subtle Text</StatHelpText>
                             </Stack>
                         </HStack>
@@ -232,11 +232,11 @@ const Analysis = ({isAuthenticated, props}) => {
                             </PopoverTrigger>
                             <PopoverContent>
                                 <PopoverCloseButton />
-                                <PopoverHeader>What is this calculation?</PopoverHeader>
-                                <PopoverBody>Explain significance of this calculation here</PopoverBody>
+                                <PopoverHeader>Estimated Home Price Increase due to the vegetation being planted and used in this image.</PopoverHeader>
+                                <PopoverBody>This calculations is based on the estimation that one tree can increase home value by 6 to 11 percent. </PopoverBody>
                             </PopoverContent>
                         </Popover>
-                        <StatNumber>{state.homeValue}</StatNumber>
+                        <StatNumber>{state.homeValue}{"%"}</StatNumber>
                         <StatHelpText>Subtle Text</StatHelpText>
 
                     </Stat>
