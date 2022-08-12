@@ -75,7 +75,8 @@ class ImageHost(models.Model):
     title = models.CharField(max_length=100, default='Me')
     # user_name = models.CharField(max_length=20, null=True, default='') #null = true -> optional to put username here
     # should we store user_name? -> so it will associate with every image which gets uploaded
-    image_file = models.ImageField(upload_to='post_images', blank=True)  # for image upload
+    image_file = models.ImageField(
+        upload_to='post_images', blank=True)  # for image upload
     uploader = models.CharField(max_length=20, default=1)
 
     # info for the database, us
@@ -86,11 +87,12 @@ class ImageHost(models.Model):
     def __str__(self):
         return self.title
 
+
 class Calculation(models.Model):
     resOxygen = models.FloatField()
     resCarbon = models.FloatField()
     eqMilesDriven = models.FloatField()
-        
+
 # mine
 # class Image(models.Model):
 #     # user info

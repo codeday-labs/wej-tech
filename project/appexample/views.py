@@ -1,3 +1,4 @@
+from turtle import home
 from django.shortcuts import render
 
 # for placeholder
@@ -203,8 +204,23 @@ class CalculateView(APIView):
 
         # figure out the code to put here to analyze the image
         countPixel = 0
-        oxygenPerPixel = 0.00208
-        carbonPerPixel = 0.000384
+        # oxygen provided per green pixel for one person.
+        oxygenPerPixel = 0.0003626862054
+        # oxygen provided per green pixel for one person .
+        oxygenPerPixelPerPerson = 0.000000358700142
+        carbonPerPixel = 0.0000669574533  # carbon absorbed per green pixel.
+        # One pixel is able to remove CO2 of equivalence to driving 0.0005181223535 miles per year.
+        milesdrivenPerPixel = 0.0005181223535
+        # One green pixel needs 0.00002092420416 gallons per week.
+        waterNeededPerPixel = 0.00002092420416
+        # taken the higher value of the figures low to high. One green pixel gives 0.0002789893888 - 0.0006277261248 gallons  of water daily.
+        waterSavedPerPixel = 0.0006277261248
+        # One green pixel absorbs  0.00001394946944 of pollutants per year.
+        pollutantsPerPixel = 0.00001394946944
+        # One green pixel can cool down by 0.00000348736736 degrees Fahrenheit
+        coolingPerPixel = 0.00000348736736
+        # Equivalent to one green pixel increasing homevalue by between  0.000008369681663 to 0.00001534441638 percent.
+        homeValueIncreasePerPixel = 0.00001534441638
 
         def getWH(imageSubmitted):  # get width and height of the image
             im = Image.open(imageSubmitted)
@@ -270,15 +286,32 @@ class CalculateView(APIView):
         def calculateO2(imageSubmitted):
             greenPixel = countGreenPixel(imageSubmitted)
             print("There are ", greenPixel, " green pixels in this picture")
-            resOxygen = greenPixel * oxygenPerPixel
-            resCarbon = greenPixel * carbonPerPixel
+            resOxygen = ('{:.2f}'.format(greenPixel * oxygenPerPixel))
+            resCarbon = ('{:.2f}'.format(greenPixel * carbonPerPixel))
             numOfAcreInGreenPixels = greenPixel / 50181120
-            milesdriven = numOfAcreInGreenPixels * 26000
+            milesdriven = ('{:.2f}'.format(numOfAcreInGreenPixels * 26000))
+            oxygenPerPerson = ('{:.2f}'.format(
+                greenPixel*oxygenPerPixelPerPerson))
+            waterNeeded = ('{:.2f}'.format(greenPixel * waterNeededPerPixel))
+            waterSaved = ('{:.2f}'.format(greenPixel * waterSavedPerPixel))
+            pollutantsAbsorbed = ('{:.2f}'.format(
+                greenPixel * pollutantsPerPixel))
+            cooling = ('{:.2f}'.format(greenPixel * coolingPerPixel))
+            homeValue = ('{:.2f}'.format(
+                greenPixel * homeValueIncreasePerPixel))
 
             res = {
                 "resOxygen": str(resOxygen),
                 "resCarbon": str(resCarbon),
-                "milesDriven": str(milesdriven)
+                "milesDriven": str(milesdriven),
+                "oxygenPerPerson": str(oxygenPerPerson),
+                "waterNeeded": str(waterNeeded),
+                "waterSaved": str(waterSaved),
+                "pollutantsAbsorbed": str(pollutantsAbsorbed),
+                "cooling": str(cooling),
+                "homeValue": str(homeValue),
+
+
             }
 
             return json.dumps(res)
