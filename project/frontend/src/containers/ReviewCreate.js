@@ -13,7 +13,7 @@ import {
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
-export const MenuBar = ({ editor }) => {
+export const ReviewCreate = ({ editor }) => {
   if (!editor) {
     return null
   }
@@ -169,19 +169,25 @@ export default () => {
     `,
   })
 
+  // return (
+  //   <Flex
+  //       height='100vh'
+  //       alignItems='center'
+  //       justifyContent='center'
+  //       bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
+  //       bgPosition="center"
+  //       bgRepeat="no-repeat"
+  //       >
+  //           <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
+  //               <ReviewCreate editor={editor} />
+  //               <EditorContent editor={editor} />
+  //           </Flex>
+  //       </Flex>
+  // )
   return (
-    <Flex
-        height='100vh'
-        alignItems='center'
-        justifyContent='center'
-        bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
-        bgPosition="center"
-        bgRepeat="no-repeat"
-        >
-            <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
-                <MenuBar editor={editor} />
-                <EditorContent editor={editor} />
-            </Flex>
-        </Flex>
+    <div>
+      <ReviewCreate editor={editor} />
+      <EditorContent editor={editor} />
+    </div>
   )
 }

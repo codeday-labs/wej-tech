@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { Flex, Spacer, Text, useMediaQuery, Icon, Button } from '@chakra-ui/react';
-import { FaPenNib, FaComments, FaCampground } from 'react-icons/fa';
-import BlogCreate from './BlogCreate';
-//https://react-icons.github.io/react-icons/icons?name=fa
 
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
@@ -19,7 +16,7 @@ const center = {
 export function EventSearch() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyByFGMHdjA8RW8TkynljXRmm8VORkid780"
+    googleMapsApiKey: "AIzaSyBtZBdM-KmcMjW2kpsdDyUPNMhnJuzDO-0"
   })
 
   const [map, setMap] = React.useState(null)

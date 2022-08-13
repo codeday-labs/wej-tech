@@ -7,6 +7,7 @@ import ReviewCreate from './ReviewCreate';
 //https://react-icons.github.io/react-icons/icons?name=fa
 
 const Greeting = ({ selectedOption }) => {
+  console.log(selectedOption)
   if (selectedOption === "Create a Blog") {
     // return <h4>Create one Blog</h4>;
     return <BlogCreate></BlogCreate>

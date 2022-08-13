@@ -10,10 +10,10 @@ import {
     FormControl, FormLabel, FormErrorMessage, FormHelperText,
   } from '@chakra-ui/react'
 
-import MenuBar from './BlogCreate';
+import BlogCreate from './BlogCreate';
 import CommunityOption from './CommunityOptions';
 import EventSearch from './EventSearch';
-import MenuBar from './ReviewCreate';
+import ReviewCreate from './ReviewCreate';
 
 const Community = ({ isAuthenticated }) => {
 
@@ -37,7 +37,6 @@ const Community = ({ isAuthenticated }) => {
         //     <Text>The community tab is in-progress, you are a member though</Text>
         // </Fragment>     
         <div>
-            {/* <MenuBar></MenuBar> */}
             <CommunityOption></CommunityOption>
         </div>
     )

@@ -67,6 +67,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
     "https://tranngocsongtruc-codeday-labs-wej-tech-wwxj6wgvhg75j-8000",
+    "https://tranngocsongtruc-codeday-labs-wej-tech-wwxj6wgvhg75j-8000.githubpreview.dev",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
