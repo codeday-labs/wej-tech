@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { Flex, Spacer, Text, useMediaQuery, Icon, Button } from '@chakra-ui/react';
 
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
+
+let coords = [];
 
 const containerStyle = {
   width: '400px',
   height: '400px'
 };
 
-const center = {
-  lat: -3.745,
-  lng: -38.523
+state = {
+  center: { lat: -33.867, lng: 151.195 },
+  coordsResult: []
 };
 
 export function EventSearch() {
@@ -20,10 +22,31 @@ export function EventSearch() {
   })
 
   const [map, setMap] = React.useState(null)
+  const [center, setCenter] = React.useState(null)
+  const [coordsResult, setCoordsResult] = React.useState(null)
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
+
+    let request = {
+      query: "Museum of Contemporary Art Australia",
+      fields: ["name", "geometry"]
+    };
+
+    let service = new google.maps.places.PlacesService(map);
+
+    service.findPlaceFromQuery(request, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+          coords.push(results[i]);
+        }
+
+      setCenter(results[0].geometry.location)
+      setCoordsResult(coords)
+      }
+    });
+
     setMap(map)
   }, [])
 
@@ -35,12 +58,31 @@ export function EventSearch() {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={10}
+      //   zoom={10}
         onLoad={onLoad}
-        onUnmount={onUnmount}
+      //   onUnmount={onUnmount}
+      // >
+      //   { /* Child components, such as markers, info windows, etc. */ }
+      //   <></>
+        center={this.state.center}
+        zoom={13}
+        onLoad={map => this.onMapLoad(map)}
+        mapContainerStyle={{ height: "400px", width: "800px" }}
       >
-        { /* Child components, such as markers, info windows, etc. */ }
-        <></>
+        {this.state.coordsResult !== [] &&
+          this.state.coordsResult.map(function(results, i) {
+            return (
+              <Marker key={i} position={results.geometry.location}>
+                <InfoWindow 
+              options={{ maxWidth: 300 }}>
+                  
+                    <span>{results.name}</span>
+                  
+                </InfoWindow>
+              </Marker>
+            );
+          })}
+  
       </GoogleMap>
   ) : <></>
 }
