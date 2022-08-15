@@ -61,17 +61,21 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "https://domain.com",
-    "https://api.domain.com",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-    "https://tranngocsongtruc-codeday-labs-wej-tech-wwxj6wgvhg75j-8000",
-    "https://tranngocsongtruc-codeday-labs-wej-tech-wwxj6wgvhg75j-8000.githubpreview.dev",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "https://domain.com",
+#     "https://api.domain.com",
+#     "http://localhost:8000",
+#     "http://127.0.0.1:8000",
+#     "https://tranngocsongtruc-codeday-labs-wej-tech-wwxj6wgvhg75j-8000",
+#     "https://tranngocsongtruc-codeday-labs-wej-tech-wwxj6wgvhg75j-8000.githubpreview.dev",
+# ]
+
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+#     r"^https://\w+\.domain\.com$",
+# ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https://\w+\.domain\.com$",
+    r".*",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True

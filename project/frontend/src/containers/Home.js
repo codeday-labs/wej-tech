@@ -14,7 +14,7 @@ const Background = () => (
 
             <Stack color='white' align='center'>
                 <Heading as='h1' size='4xl'>Eye catching phrase</Heading>
-                <Text>Placeholder</Text>
+                <Text>Welcome to WEJ-Tech</Text>
                 <Link to='/signup'>
                     <Button colorScheme='whatsapp'>Get Started</Button>
                 </Link>
