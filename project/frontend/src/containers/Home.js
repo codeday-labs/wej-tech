@@ -41,7 +41,9 @@ const Footer = () => (
                 </Stack>
             </Center>
             <Center width='250px' height='100px'>
-                <Text>FAQ + Policy</Text>
+            <Link to='/faq'>
+                    <Text fontSize='4xl'>FAQ + Policy</Text>
+                </Link>
             </Center>
             <Center width='250px' height='100px'>
             </Center>

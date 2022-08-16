@@ -16,4 +16,5 @@ urlpatterns = [
     path('gettestpage', index),
     path('imageupload', index),
     path('analysis', index),
+    path('faq', index),
 ]

@@ -19,6 +19,7 @@ import CalculatePage from './containers/CalculatePage';
 import GetTestPage from './containers/GetTestPage';
 import ImageUpload from './ImageUpload';
 import Analysis from './containers/Analysis';
+import FAQ from './containers/FAQ';
 
 
 const AuthApp = () => {
@@ -40,6 +41,7 @@ const AuthApp = () => {
                                     <Route exact path='/gettestpage' element={<GetTestPage />} />
                                     <Route exact path='/imageupload' element={<ImageUpload />}/>
                                     <Route exact path='/analysis' element={<Analysis />}/>
+                                    <Route exact path='/faq' element={<FAQ />}/>
                                 </Routes>
                             </Layout>
                     </Router>
