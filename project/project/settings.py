@@ -68,7 +68,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://domain.com",
     "https://api.domain.com",
     "http://localhost:8000",
-    "http://127.0.0.1:8000"
+    "http://127.0.0.1:8000",
+    "https://tranngocsongtruc-codeday-labs-wej-tech-wwxj6wgvhg75j-8000",
+    "https://tranngocsongtruc-codeday-labs-wej-tech-wwxj6wgvhg75j-8000.githubpreview.dev",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
@@ -188,8 +190,8 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
     ),
 }
 
