@@ -44,8 +44,6 @@ const Footer = () => (
                 <Text>FAQ + Policy</Text>
             </Center>
             <Center width='250px' height='100px'>
-                <Input placeholder='youremail@gmail.com'></Input>
-                <Button>Newsletter Signup</Button>
             </Center>
         </HStack>
     </>
