@@ -90,7 +90,7 @@ const Analysis = ({isAuthenticated, props}) => {
                                     </PopoverContent>
                                 </Popover>
                                 <StatNumber>{state.resOxygen}{" pounds/year"}</StatNumber>
-                                <StatHelpText>Subtle Text</StatHelpText>
+                                
 
 
                                 <Popover>
@@ -108,7 +108,7 @@ const Analysis = ({isAuthenticated, props}) => {
                                     </PopoverContent>
                                 </Popover>
                                 <StatNumber>{state.resCarbon}{" pounds/year"}</StatNumber>
-                                <StatHelpText>Subtle Text</StatHelpText>
+                                
 
                                 <Popover>
                                     <PopoverTrigger>
@@ -125,7 +125,7 @@ const Analysis = ({isAuthenticated, props}) => {
                                     </PopoverContent>
                                 </Popover>
                                 <StatNumber>{state.milesDriven}{" miles/year"}</StatNumber>
-                                <StatHelpText>Subtle Text</StatHelpText>
+                                
 
 
                                 <Popover>
@@ -143,7 +143,7 @@ const Analysis = ({isAuthenticated, props}) => {
                                     </PopoverContent>
                                 </Popover>
                                 <StatNumber>{state.oxygenPerPerson}{" persons/year"}</StatNumber>
-                                <StatHelpText>Subtle Text</StatHelpText>
+                                
                             </Stack>
                         
                             <Stack>
@@ -162,7 +162,7 @@ const Analysis = ({isAuthenticated, props}) => {
                                     </PopoverContent>
                                 </Popover>
                                 <StatNumber>{state.waterNeeded}{"Gallons/Week"}</StatNumber>
-                                <StatHelpText>Subtle Text</StatHelpText>
+                                
 
 
 
@@ -181,7 +181,7 @@ const Analysis = ({isAuthenticated, props}) => {
                                     </PopoverContent>
                                 </Popover>
                                 <StatNumber>{state.waterSaved}{" Gallons/Day"}</StatNumber>
-                                <StatHelpText>Subtle Text</StatHelpText>
+                                
 
 
 
@@ -200,7 +200,7 @@ const Analysis = ({isAuthenticated, props}) => {
                                     </PopoverContent>
                                 </Popover>
                                 <StatNumber>{state.pollutantsAbsorbed}{" /Yearly"}</StatNumber>
-                                <StatHelpText>Subtle Text</StatHelpText>
+                                
 
 
                                 <Popover>
@@ -218,7 +218,7 @@ const Analysis = ({isAuthenticated, props}) => {
                                     </PopoverContent>
                                 </Popover>
                                 <StatNumber>{state.cooling}{"°F"}</StatNumber>
-                                <StatHelpText>Subtle Text</StatHelpText>
+                                
                             </Stack>
                         </HStack>
 
@@ -237,7 +237,7 @@ const Analysis = ({isAuthenticated, props}) => {
                             </PopoverContent>
                         </Popover>
                         <StatNumber>{state.homeValue}{"%"}</StatNumber>
-                        <StatHelpText>Subtle Text</StatHelpText>
+                        <StatHelpText>Disclaimer: "These values are only an estimate and not meant to be used scientifically"</StatHelpText>
 
                     </Stat>
                     
