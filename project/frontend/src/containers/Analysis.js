@@ -107,7 +107,7 @@ const Analysis = ({isAuthenticated, props}) => {
                                         <PopoverBody>This calculation provide an estimate of how much CO2 this image absorbs per year, given that one tree absorbs 48 pounds of CO2 per year.</PopoverBody>
                                     </PopoverContent>
                                 </Popover>
-                                <StatNumber>{state.resresCarbon}{" pounds/year"}</StatNumber>
+                                <StatNumber>{state.resCarbon}{" pounds/year"}</StatNumber>
                                 <StatHelpText>Subtle Text</StatHelpText>
 
                                 <Popover>
