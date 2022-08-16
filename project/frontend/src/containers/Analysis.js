@@ -25,8 +25,8 @@ import {
     StatGroup,
   } from '@chakra-ui/react'
 
-
-const Analysis = ({isAuthenticated, props}) => {
+//const Analysis = ({isAuthenticated, props}) => {
+const Analysis = () => {
 
     const { state } = useLocation();
 
@@ -161,7 +161,7 @@ const Analysis = ({isAuthenticated, props}) => {
                                         <PopoverBody>This calculations is an estimate of how many gallons of water is needed weekly based on the estimation that most trees need a minimum of 15 gallons of water per week. </PopoverBody>
                                     </PopoverContent>
                                 </Popover>
-                                <StatNumber>{state.waterNeeded}{"Gallons/Week"}</StatNumber>
+                                <StatNumber>{state.waterNeeded}{" Gallons/Week"}</StatNumber>
                                 
 
 
@@ -199,7 +199,7 @@ const Analysis = ({isAuthenticated, props}) => {
                                         <PopoverBody>This is based on the calculations that one tree absorbs approximately 10 pound of pollutants every year.</PopoverBody>
                                     </PopoverContent>
                                 </Popover>
-                                <StatNumber>{state.pollutantsAbsorbed}{" /Yearly"}</StatNumber>
+                                <StatNumber>{state.pollutantsAbsorbed}{" Pounds/Yearly"}</StatNumber>
                                 
 
 
