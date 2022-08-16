@@ -6,9 +6,9 @@ import axios from 'axios';
 
 
 import {
-    Heading, Input, Button, Text, Flex,
-    FormControl, FormLabel, FormErrorMessage, FormHelperText,
-  } from '@chakra-ui/react'
+  Heading, Input, Button, Text, Flex, Box,
+  FormControl, FormLabel, FormErrorMessage, FormHelperText, Textarea, VStack, HStack,
+} from '@chakra-ui/react'
 
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
@@ -137,36 +137,7 @@ export default () => {
     extensions: [
       StarterKit,
     ],
-    content: `
-      <h2>
-        Hi there,
-      </h2>
-      <p>
-        this is a <em>basic</em> example of <strong>tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
-      </p>
-      <ul>
-        <li>
-          That’s a bullet list with one …
-        </li>
-        <li>
-          … or two list items.
-        </li>
-      </ul>
-      <p>
-        Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
-      </p>
-      <pre><code class="language-css">body {
-  display: none;
-}</code></pre>
-      <p>
-        I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
-      </p>
-      <blockquote>
-        Wow, that’s amazing. Good work, boy! 👏
-        <br />
-        — Mom
-      </blockquote>
-    `,
+    content: ``,
   })
 
   // return (
@@ -185,9 +156,23 @@ export default () => {
   //       </Flex>
   // )
   return (
-    <div>
+    <Box
+      borderRadius='5px'
+      border='1px solid white'
+    >
       <ReviewCreate editor={editor} />
-      <EditorContent editor={editor} />
-    </div>
+      <Box 
+        bgColor='white'
+        border='1px solid black'
+        borderRadius='10px'
+        margin='2rem'
+      >
+        <Box
+          margin='1.5rem'
+        >
+          <EditorContent editor={editor} />
+        </Box>
+      </Box>
+    </Box>
   )
 }

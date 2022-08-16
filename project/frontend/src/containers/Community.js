@@ -25,7 +25,7 @@ const Community = ({ isAuthenticated }) => {
                 <Button colorScheme='whatsapp'>Login</Button>
             </Link>
             <Text>
-                Don't have an account? <Link to='/reset-password'>Sign up</Link>
+                Don't have an account? <Link to='/signup'>Sign up</Link>
             </Text>
         </Fragment>    
     )
@@ -51,6 +51,7 @@ const Community = ({ isAuthenticated }) => {
         bgRepeat="no-repeat"
         >
             <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
+                {/* {authView()} */}
                 {isAuthenticated ? authView() : guestView()}
             </Flex>
         </Flex>
