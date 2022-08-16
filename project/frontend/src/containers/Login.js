@@ -48,8 +48,8 @@ const Login = ({ login, isAuthenticated }) => {
             bgRepeat="no-repeat"
         >
             <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
-                <Heading>Sign In</Heading>
-                <Text mb={3}>Sign into your Account</Text>
+                <Heading>Log In</Heading>
+                <Text mb={3}>Log into your Account</Text>
                 <form onSubmit={e => onSubmit(e)}>
                     <FormControl>
                         <FormLabel mb={3}>Email</FormLabel>
