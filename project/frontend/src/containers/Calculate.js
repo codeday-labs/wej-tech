@@ -17,7 +17,7 @@ const Calculate = ({ isAuthenticated }) => {
     const guestView = () => (
         <Fragment>
             <Heading mb={3}>Access Denied</Heading>
-            <Text mb={6}>You need to be a member to access the Community tab</Text>
+            <Text mb={6}>You need to be a member to access the Calculate tab</Text>
             <Link to='/login'>
                 <Button colorScheme='whatsapp'>Login</Button>
             </Link>
@@ -31,8 +31,8 @@ const Calculate = ({ isAuthenticated }) => {
     (
         <Fragment>
             <ImageUpload></ImageUpload>
-            <Heading mb={3}>In construction</Heading>
-            <Text></Text>
+            {/* <Heading mb={3}>In construction</Heading> */}
+            {/* <Text></Text> */}
         </Fragment>     
     )
 
@@ -47,8 +47,8 @@ const Calculate = ({ isAuthenticated }) => {
         >
             <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
             <ImageUpload>Upload your Image</ImageUpload>
-                <Heading mb={3}>In construction</Heading>
-                <Text>The calculate tab is in-progress</Text>
+                {/* <Heading mb={3}>In construction</Heading> */}
+                {/* <Text>The calculate tab is in-progress</Text> */}
             </Flex>
         </Flex>
     )
