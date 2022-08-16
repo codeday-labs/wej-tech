@@ -13,13 +13,13 @@ const Background = () => (
         >
 
             <Stack color='white' align='center'>
-                <Heading as='h1' size='4xl'>Eye catching phrase</Heading>
-                <Text>Placeholder</Text>
+                <Heading as='h1' size='3xl'>Your Backyard Flora in Numbers</Heading>
+                <Heading size = '2xl'>Take Control of your Environmental Decisions</Heading>
                 <Link to='/signup'>
                     <Button colorScheme='whatsapp'>Get Started</Button>
                 </Link>
                 <Link to='/login'>
-                    <Text>or if you already have an account</Text>
+                    <Text>Log in here, if you already have an account!</Text>
                 </Link>
             </Stack>
 
