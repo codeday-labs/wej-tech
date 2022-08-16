@@ -25,8 +25,8 @@ import {
     StatGroup,
   } from '@chakra-ui/react'
 
-
-const Analysis = ({isAuthenticated, props}) => {
+//const Analysis = ({isAuthenticated, props}) => {
+const Analysis = () => {
 
     const { state } = useLocation();
 
