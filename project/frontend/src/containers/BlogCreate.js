@@ -3,7 +3,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { connect }  from 'react-redux';
 import { login } from '../actions/auth';
 import axios from 'axios';
-
+import { FaBold, FaItalic, FaStrikethrough, FaCode, FaParagraph, FaFileCode, FaQuoteLeft, FaUndo, FaRedo } from 'react-icons/fa';
 
 import {
     Heading, Input, Button, Text, Flex, Box,
@@ -24,39 +24,39 @@ export const BlogCreate = ({ editor }) => {
         onClick={() => editor.chain().focus().toggleBold().run()}
         className={editor.isActive('bold') ? 'is-active' : ''}
       >
-        bold
+        <FaBold />
       </Button>
       <Button
         onClick={() => editor.chain().focus().toggleItalic().run()}
         className={editor.isActive('italic') ? 'is-active' : ''}
       >
-        italic
+        <FaItalic />
       </Button>
       <Button
         onClick={() => editor.chain().focus().toggleStrike().run()}
         className={editor.isActive('strike') ? 'is-active' : ''}
       >
-        strike
+        <FaStrikethrough />
       </Button>
       <Button
         onClick={() => editor.chain().focus().toggleCode().run()}
         className={editor.isActive('code') ? 'is-active' : ''}
       >
-        code
+        <FaCode />
       </Button>
-      <Button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
+      {/* <Button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
         clear marks
-      </Button>
-      <Button onClick={() => editor.chain().focus().clearNodes().run()}>
+      </Button> */}
+      {/* <Button onClick={() => editor.chain().focus().clearNodes().run()}>
         clear nodes
-      </Button>
+      </Button> */}
       <Button
         onClick={() => editor.chain().focus().setParagraph().run()}
         className={editor.isActive('paragraph') ? 'is-active' : ''}
       >
-        paragraph
+        <FaParagraph />
       </Button>
-      <Button
+      {/* <Button
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
         className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
       >
@@ -91,8 +91,8 @@ export const BlogCreate = ({ editor }) => {
         className={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
       >
         h6
-      </Button>
-      <Button
+      </Button> */}
+      {/* <Button
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         className={editor.isActive('bulletList') ? 'is-active' : ''}
       >
@@ -103,31 +103,33 @@ export const BlogCreate = ({ editor }) => {
         className={editor.isActive('orderedList') ? 'is-active' : ''}
       >
         ordered list
-      </Button>
+      </Button> */}
       <Button
         onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         className={editor.isActive('codeBlock') ? 'is-active' : ''}
       >
-        code block
+        <FaFileCode />
       </Button>
       <Button
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
         className={editor.isActive('blockquote') ? 'is-active' : ''}
       >
-        blockquote
+        <FaQuoteLeft />
       </Button>
-      <Button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
+      {/* <Button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
         horizontal rule
       </Button>
       <Button onClick={() => editor.chain().focus().setHardBreak().run()}>
         hard break
-      </Button>
+      </Button> */}
       <Button onClick={() => editor.chain().focus().undo().run()}>
-        undo
+        <FaUndo />
       </Button>
       <Button onClick={() => editor.chain().focus().redo().run()}>
-        redo
+        <FaRedo />
       </Button>
+      <Button colorScheme='teal'>Submit</Button>
+
     </>
   )
 }
