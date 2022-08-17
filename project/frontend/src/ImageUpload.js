@@ -144,29 +144,6 @@ export const ImageUpload = () => {
     >
 
       <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
-        <Box bgColor='gray.400'>
-          <Text>{isCalculated}</Text>
-          <Heading>Analysis</Heading>
-          <Heading size='md'>Oxygen</Heading>
-          <Text>{dataJSON.resOxygen}</Text>
-          <Heading size='md'>Carbon</Heading>
-          <Text>{dataJSON.resCarbon}</Text> 
-          <Heading size='md'>Equiv Miles Driven</Heading>
-          <Text>{dataJSON.milesDriven}</Text>
-          <Heading size='md'>Oxygen Generated Per Person Per Year</Heading>
-          <Text>{dataJSON.oxygenPerPerson}</Text>
-          <Heading size='md'>Water Needed in Gallons Weekly</Heading>
-          <Text>{dataJSON.waterNeeded}</Text>
-          <Heading size='md'>Water Saved Daily in Gallons</Heading>
-          <Text>{dataJSON.waterSaved}</Text>
-          <Heading size='md'>Pollutants Absorbed by Vegetation</Heading>
-          <Text>{dataJSON.pollutantsAbsorbed}</Text>
-          <Heading size='md'>Amount of Cooling Provided</Heading>
-          <Text>{dataJSON.cooling}</Text>
-          <Heading size='md'>Home Value Increase in Percentage</Heading>
-          <Text>{dataJSON.homeValue}</Text>
-          <Progress size ='lg' isIndeterminate={isProgressing} />
-        </Box>
         <Heading>Image Upload</Heading>
         <Text mb={3}>Upload Your Image Here</Text>
         <form onSubmit={e => handleSubmit(e)}> 

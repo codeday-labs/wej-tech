@@ -7,7 +7,7 @@ import axios from 'axios';
 
 import {
     Heading, Input, Button, Text, Flex,
-    FormControl, FormLabel, FormErrorMessage, FormHelperText,
+    FormControl, FormLabel, FormErrorMessage, FormHelperText, Alert, AlertIcon,
   } from '@chakra-ui/react'
 
 import BlogCreate from './BlogCreate';
@@ -19,13 +19,17 @@ const Community = ({ isAuthenticated }) => {
 
     const guestView = () => (
         <Fragment>
+            <Alert status='warning'>
+                <AlertIcon />
+                The Community features are still under construction
+            </Alert>            
             <Heading mb={3}>Access Denied</Heading>
             <Text mb={6}>You need to be a member to access the Community tab</Text>
             <Link to='/login'>
                 <Button colorScheme='whatsapp'>Login</Button>
             </Link>
             <Text>
-                Don't have an account? <Link to='/reset-password'>Sign up</Link>
+                Don't have an account? <Link to='/signup'>Sign up</Link>
             </Text>
         </Fragment>    
     )
@@ -37,6 +41,10 @@ const Community = ({ isAuthenticated }) => {
         //     <Text>The community tab is in-progress, you are a member though</Text>
         // </Fragment>     
         <div>
+            <Alert status='warning'>
+                <AlertIcon />
+                The Community features are still under construction
+            </Alert>
             <CommunityOption></CommunityOption>
         </div>
     )
@@ -51,7 +59,8 @@ const Community = ({ isAuthenticated }) => {
         bgRepeat="no-repeat"
         >
             <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
-                {isAuthenticated ? authView() : guestView()}
+                {authView()}
+                {/* {isAuthenticated ? authView() : guestView()} */}
             </Flex>
         </Flex>
     )
