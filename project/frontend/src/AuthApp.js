@@ -18,6 +18,8 @@ import Calculate from './containers/Calculate';
 import CalculatePage from './containers/CalculatePage';
 import Analysis from './containers/Analysis';
 import FAQ from './containers/FAQ';
+import FEEDBACK from './containers/FEEDBACK';
+import CONTACT from './containers/CONTACT';
 
 
 const AuthApp = () => {
@@ -38,6 +40,8 @@ const AuthApp = () => {
                                     <Route exact path='/calculatepage' element={<CalculatePage />}/>
                                     <Route exact path='/analysis' element={<Analysis />}/>
                                     <Route exact path='/faq' element={<FAQ />}/>
+                                    <Route exact path='/feedback' element={<FEEDBACK />}/>
+                                    <Route exact path='/contact' element={<CONTACT />}/>
                                 </Routes>
                             </Layout>
                     </Router>

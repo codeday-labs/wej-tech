@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Center, Stack, HStack, Heading, Text, Input } from '@chakra-ui/react';
+import { Button, Center, Stack, HStack, Heading, Text, Input, Spacer } from '@chakra-ui/react';
 
 
 const Background = () => (
@@ -22,14 +22,16 @@ const Background = () => (
             
         >
 
-            <Stack color='white' align='center'>
-                <Heading as='h1' size='3xl'>Your Backyard Flora in Numbers</Heading>
-                <Heading size = '2xl'>Take Control of your Environmental Decisions</Heading>
+            <Stack color='white' align='center' spacing={4}>
+                <Heading as='h1' size='4xl' >Your Backyard Flora in Numbers</Heading>
+                <Spacer />
+                <Heading size = '2xl'noOfLines={3} >Take Control of your Environmental Decisions</Heading>
                 <Link to='/signup'>
-                    <Button colorScheme='whatsapp'>Get Started</Button>
+                    <Button colorScheme='whatsapp' size = 'lg' height='100px' width='400px'>
+                        <Text fontSize = '4xl' >Get Started!</Text></Button>
                 </Link>
                 <Link to='/login'>
-                    <Text>Log in here, if you already have an account!</Text>
+                    <Text fontSize='4xl' color = 'floralwhite'>Log in here, if you already have an account!</Text>
                 </Link>
             </Stack>
 
@@ -40,22 +42,30 @@ const Background = () => (
 const Footer = () => (
     <>
         <HStack justifyContent='space-evenly'>
-            <Center width='250px' background='white'>
-                <Stack>
-                    <Text>Address:</Text>
+            {/* <Center  width='250px' background='white'>
+                <Stack variant = 'outline' >
+                    <Text>Contact Us Here:</Text>
                     <Text>123 Peck Road, Fremont, CA 94536</Text>
                     <Text>Phone Number:</Text>
                     <Text>510-123-4567</Text>
                     <Text>Email:</Text>
                     <Text>wejtech@wejtech.com</Text>
                 </Stack>
-            </Center>
+            </Center> */}
             <Center width='250px' height='100px'>
-            <Link to='/faq'>
-                    <Text fontSize='4xl'>FAQ + Policy</Text>
+            <Link to='/contact'>
+                    <Button colorScheme ='green' fontSize='4xl' variant = 'outline'height={100}>Contact Us</Button>
                 </Link>
             </Center>
             <Center width='250px' height='100px'>
+            <Link to='/faq'>
+                    <Button colorScheme ='green' fontSize='4xl' variant = 'outline'height={100}>FAQ + Policy</Button>
+                </Link>
+            </Center>
+            <Center width='250px' height='100px'>
+            <Link to='/feedback'>
+                    <Button colorScheme ='green' fontSize='4xl' variant = 'outline'height={100}>Feedback</Button>
+                </Link>
             </Center>
         </HStack>
     </>

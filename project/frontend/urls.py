@@ -15,4 +15,6 @@ urlpatterns = [
     path('calculatepage', index),
     path('analysis', index),
     path('faq', index),
+    path('feedback', index),
+    path('contact', index),
 ]
