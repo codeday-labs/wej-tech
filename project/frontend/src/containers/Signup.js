@@ -53,7 +53,7 @@ const Signup = ({ signup, isAuthenticated }) => {
             height='100vh'
             alignItems='center'
             justifyContent='center'
-            bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
+            bgImage="/media/post_images/New_Image9.jpg"
             bgPosition="center"
             bgRepeat="no-repeat"
         >

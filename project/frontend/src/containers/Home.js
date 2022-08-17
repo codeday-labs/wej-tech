@@ -2,14 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Center, Stack, HStack, Heading, Text, Input } from '@chakra-ui/react';
 
+
 const Background = () => (
     <>
         <Center
             pos="relative"
-            h="1080"
-            bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
+            h="900"
+            // bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
+            backgroundImage = "/media/post_images/New_Image9.jpg"
             bgPosition="center"
             bgRepeat="no-repeat"
+            width= '100vw'
+            height= '100vh'
+            fit='contain'
+            background-size = 'cover'
+            
+
+            
+            
         >
 
             <Stack color='white' align='center'>

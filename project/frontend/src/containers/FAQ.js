@@ -9,8 +9,8 @@ export const FAQ = () =>{
         height='100vh'
         alignItems='center'
         justifyContent='center'
-        bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
-        bgPosition="center"
+        bgImage="/media/post_images/New_Image9.jpg"
+        bgPosition="center center"
         bgRepeat="no-repeat"
         >
             <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
