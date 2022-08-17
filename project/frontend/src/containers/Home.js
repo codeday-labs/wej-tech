@@ -30,7 +30,7 @@ const Background = () => (
 const Footer = () => (
     <>
         <HStack justifyContent='space-evenly'>
-            <Center width='250px' background='pink'>
+            <Center width='250px' background='white'>
                 <Stack>
                     <Text>Address:</Text>
                     <Text>123 Peck Road, Fremont, CA 94536</Text>
