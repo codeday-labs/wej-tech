@@ -194,6 +194,7 @@ export const ImageUpload = () => {
           Submit
           </Button>
         </form>
+        <Progress size ='lg' isIndeterminate={isProgressing} />
       </Flex> 
     </Flex>              
     
