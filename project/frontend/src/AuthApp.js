@@ -16,8 +16,10 @@ import Layout from './hocs/Layout';
 import Community from './containers/Community';
 import Calculate from './containers/Calculate';
 import CalculatePage from './containers/CalculatePage';
-import GetTestPage from './containers/GetTestPage';
-import ImageUpload from './ImageUpload';
+import Analysis from './containers/Analysis';
+import FAQ from './containers/FAQ';
+import FEEDBACK from './containers/FEEDBACK';
+import CONTACT from './containers/CONTACT';
 
 
 const AuthApp = () => {
@@ -36,8 +38,10 @@ const AuthApp = () => {
                                     <Route exact path='/community' element={<Community />}/>
                                     <Route exact path='/calculate' element={<Calculate />}/>
                                     <Route exact path='/calculatepage' element={<CalculatePage />}/>
-                                    <Route exact path='/gettestpage' element={<GetTestPage />} />
-                                    <Route exact path='/imageupload' element={<ImageUpload />}/>
+                                    <Route exact path='/analysis' element={<Analysis />}/>
+                                    <Route exact path='/faq' element={<FAQ />}/>
+                                    <Route exact path='/feedback' element={<FEEDBACK />}/>
+                                    <Route exact path='/contact' element={<CONTACT />}/>
                                 </Routes>
                             </Layout>
                     </Router>

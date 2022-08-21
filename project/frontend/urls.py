@@ -13,6 +13,8 @@ urlpatterns = [
     path('community', index),
     path('calculate', index),
     path('calculatepage', index),
-    path('gettestpage', index),
-    path('imageupload', index),
+    path('analysis', index),
+    path('faq', index),
+    path('feedback', index),
+    path('contact', index),
 ]

@@ -9,10 +9,13 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+from dotenv import load_dotenv
 import os  # for image upload
 from pathlib import Path
-import os
 from datetime import timedelta
+
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -65,7 +68,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://domain.com",
     "https://api.domain.com",
     "http://localhost:8000",
-    "http://127.0.0.1:8000"
+    "http://127.0.0.1:8000",
+    "https://tranngocsongtruc-codeday-labs-wej-tech-wwxj6wgvhg75j-8000",
+    "https://tranngocsongtruc-codeday-labs-wej-tech-wwxj6wgvhg75j-8000.githubpreview.dev",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
@@ -108,8 +113,8 @@ DATABASES = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'jeri.imperial@gmail.com'
-EMAIL_HOST_PASSWORD = 'xhwlpaoadkrxrofz'
+EMAIL_HOST_USER = os.environ["email"]
+EMAIL_HOST_PASSWORD = os.environ["pass"]
 EMAIL_USE_TLS = True
 
 
@@ -185,8 +190,8 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
     ),
 }
 

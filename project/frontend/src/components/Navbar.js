@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Flex, Button } from '@chakra-ui/react';
+import { Flex, Button, Spacer } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { logout } from '../actions/auth';
 import { connect } from 'react-redux';
@@ -11,10 +11,11 @@ const Navbar = ({ logout, isAuthenticated }) => {
         <Fragment>
             <Flex alignItems='right'>
                 <Link to='/login'>
-                    <Button>Log In</Button>
+                    <Button colorScheme= 'green' size = 'lg'>Log In</Button>
                 </Link>
+                
                 <Link to='/signup'>
-                    <Button>Sign Up</Button>
+                    <Button colorScheme='green' size = 'lg'>Sign Up</Button>
                 </Link>
             </Flex> 
         </Fragment>
@@ -25,7 +26,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
         <Fragment>
             <Flex alignItems='right'>
                     <Button
-                        onClick={logout}
+                        onClick={logout} size = 'lg' colorScheme='red'
                     >
                     Logout
                     </Button>
@@ -41,19 +42,13 @@ const Navbar = ({ logout, isAuthenticated }) => {
         <Flex alignItems='center' justifyContent='space-between' background='#EDF2F7'>
             <Flex alignItems='left' background='#EDF2F7'>
                 <Link to ='/'>
-                    <Button>Home</Button>
+                    <Button colorScheme= 'green' size = 'lg'>Home</Button>
                 </Link>
                 <Link to='/calculate'>
-                    <Button>Calculate</Button>
+                    <Button colorScheme= 'green' size = 'lg'>Calculate</Button>
                 </Link>
                 <Link to ='/community'>
-                    <Button>Community</Button>
-                </Link>
-                <Link to ='/gettestpage'>
-                    <Button>GET Request Test</Button>
-                </Link>
-                <Link to ='/imageupload'>
-                    <Button>POST Request Image</Button>
+                    <Button colorScheme= 'green' size = 'lg'>Community</Button>
                 </Link>
             </Flex>
             <Flex alignItems='right'>

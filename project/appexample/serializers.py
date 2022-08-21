@@ -1,6 +1,6 @@
 #Serializers is a way to convert Python data to API JSON format and vice-versa.
 from rest_framework import serializers
-from .models import User, ImageHost
+from .models import User, ImageHost, Calculation
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,6 +33,11 @@ class CreateImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImageHost
         fields = ('title', 'image_file', 'uploader')
+
+class CalculataionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Calculation
+        fields = ('resOxygen', 'resCarbon', 'eqMilesDriven')
 
 
 # makes sure data thats being sent in POST request is valid to create a new user

@@ -7,22 +7,29 @@ import axios from 'axios';
 
 import {
     Heading, Input, Button, Text, Flex,
-    FormControl, FormLabel, FormErrorMessage, FormHelperText,
+    FormControl, FormLabel, FormErrorMessage, FormHelperText, Alert, AlertIcon,
   } from '@chakra-ui/react'
 
-import MenuBar from './BlogCreate';
+import BlogCreate from './BlogCreate';
+import CommunityOption from './CommunityOptions';
+import EventSearch from './EventSearch';
+import ReviewCreate from './ReviewCreate';
 
 const Community = ({ isAuthenticated }) => {
 
     const guestView = () => (
         <Fragment>
+            <Alert status='warning'>
+                <AlertIcon />
+                The Community features are still under construction
+            </Alert>            
             <Heading mb={3}>Access Denied</Heading>
             <Text mb={6}>You need to be a member to access the Community tab</Text>
             <Link to='/login'>
                 <Button colorScheme='whatsapp'>Login</Button>
             </Link>
             <Text>
-                Don't have an account? <Link to='/reset-password'>Sign up</Link>
+                Don't have an account? <Link to='/signup'>Sign up</Link>
             </Text>
         </Fragment>    
     )
@@ -34,7 +41,11 @@ const Community = ({ isAuthenticated }) => {
         //     <Text>The community tab is in-progress, you are a member though</Text>
         // </Fragment>     
         <div>
-            <BlogCreate></BlogCreate>
+            <Alert status='warning'>
+                <AlertIcon />
+                The Community features are still under construction
+            </Alert>
+            <CommunityOption></CommunityOption>
         </div>
     )
 
@@ -43,12 +54,13 @@ const Community = ({ isAuthenticated }) => {
         height='100vh'
         alignItems='center'
         justifyContent='center'
-        bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
+        bgImage="/media/post_images/New_Image9.jpg"
         bgPosition="center"
         bgRepeat="no-repeat"
         >
             <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
-                {isAuthenticated ? authView() : guestView()}
+                {authView()}
+                {/* {isAuthenticated ? authView() : guestView()} */}
             </Flex>
         </Flex>
     )

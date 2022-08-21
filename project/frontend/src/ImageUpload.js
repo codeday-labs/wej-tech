@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Input, Button, Box, FormControl, Flex, Heading, FormLabel, Text } from '@chakra-ui/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { Input, Button, Box, FormControl, Flex, Heading, FormLabel, Text, Progress } from '@chakra-ui/react';
 import axios from 'axios';
 //import CalculateView from './views";
 
@@ -23,14 +24,60 @@ function getCookie(cname) {
  }
 
 export const ImageUpload = () => {
+
+  let navigate = useNavigate();
+
   const [formData, setFormData] = useState({
       uploader: '',
       title:'',
     })
   const [postImage, setPostImage] = useState(null);
+  const [isCalculated, setIsCalculated] = useState("false");
+  const [isProgressing, setIsProgressing] = useState(false);
 
   const {uploader, title} = formData;
 
+  const [imgDir, setImgDir] = useState("default_dir")
+  const [dataJSON, setDataJSON] = useState({
+    "resOxygen" : 1,
+    "resCarbon" : 2,
+    "milesDriven" : 3,
+    "oxygenPerPerson" : 4,
+    "waterNeeded" : 5,
+    "waterSaved" : 6,
+    "pollutantsAbsorbed" : 7,
+    "cooling" : 8,
+    "homeValue" : 9,
+
+    "imageDirectory" : "default"
+  })
+
+  const didMount = useRef(false);
+
+  useEffect (() => {
+    // if true that it has been initialized already
+    if (didMount.current) {
+      console.log("dataJSON has been changed")
+      setIsProgressing(false);
+      navigate("/analysis", {state: { 
+        resOxygen: dataJSON.resOxygen,
+        resCarbon: dataJSON.resCarbon,
+        milesDriven: dataJSON.milesDriven,
+        oxygenPerPerson: dataJSON.oxygenPerPerson,
+        waterNeeded: dataJSON.waterNeeded,
+        waterSaved: dataJSON.waterSaved,
+        pollutantsAbsorbed: dataJSON.pollutantsAbsorbed,
+        cooling: dataJSON.cooling,
+        homeValue: dataJSON.homeValue,
+        imageDirectory: imgDir
+      }})
+    }
+    // if that it's initialized as false (first time)
+    else {
+      console.log("dataJSON has been initialized")
+      didMount.current = true
+    }
+  }, [dataJSON])
 
   const handleChange = e => setFormData ({ ...formData, [e.target.name]: e.target.value})
 
@@ -50,31 +97,52 @@ export const ImageUpload = () => {
     newFormData.append('image_file', postImage);
     newFormData.append('uploader', formData.uploader);
     
-    let url = 'http://127.0.0.1:8000/appexample/upload';  //work for all types of urls
-    // let url = 'http://localhost:8000/appexample/calculate';
-    // axios.post(url, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
-    axios.post(url, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-    
-    alert("Your file is being uploaded!")
+    //let url = 'http://127.0.0.1:8000/appexample/upload';  //work for all types of urls
+    let urlCalculate = 'http://localhost:8000/appexample/calculate';
+    let urlUpload = 'http://localhost:8000/appexample/upload';
+
+    axios.post(urlUpload, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
+      .then((res) => {
+        console.log(res.data)
+        setImgDir(res.data.image_file)
+      })
+
+    axios.post(urlCalculate, newFormData, { headers: {'Content-Type': 'multipart/form-data'}})
+      .then((res) => {
+        const json = res.data
+        const parsed_json = JSON.parse(json)
+        setDataJSON(parsed_json)
+        // setResOxygen(dataJSON.resOxygen)
+        // setResCarbon(dataJSON.resCarbon)
+        // setMilesDriven(dataJSON.milesDriven)
+        // console.log(resOxygen)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    // alert("Your file is being uploaded!")
   };
+
+  // if (isPosted) {
+  //   return <Navigate to='/gettestpage' />
+  // }
+
+  // if (dataJSON.resOxygen != 1) {
+  //   setIsCalculated("true")
+  // }
 
   // render() {
   return (
+
     <Flex
-    
       height='100vh'
       alignItems='center'
       justifyContent='center'
-      bgImage="url(https://i.redd.it/5oxq3tjlfo821.jpg)"
+      bgImage="/media/post_images/New_Image9.jpg"
       bgPosition="center"
       bgRepeat="no-repeat"
     >
+
       <Flex direction='column' background='#EDF2F7' p={12} rounded={6}>
         <Heading>Image Upload</Heading>
         <Text mb={3}>Upload Your Image Here</Text>
@@ -118,13 +186,15 @@ export const ImageUpload = () => {
               />
           </FormControl>
           <Button
-            type='submit'
-            colorScheme='whatsapp'
+              onClick={() => setIsProgressing(true)}  
+              type='submit'
+              colorScheme='whatsapp'
              mb={6}
           >
           Submit
           </Button>
         </form>
+        <Progress size ='lg' isIndeterminate={isProgressing} />
       </Flex> 
     </Flex>              
     
